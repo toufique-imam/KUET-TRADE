@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">APP_13 Firebase Login</string>
+    <string name="your_mail">Your Mail</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_password">Your Password</string>
+    <string name="don_t_have_an_account_sign_up_here">Don\'t have an account , Sign UP here!</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="show">Show</string>
+    <string name="show_details">Logout</string>
+    <string name="update">Update</string>
+    <string name="title_activity_store_and_user_nav_settings">store_and_user_nav_settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="how_many_you_want_to_sell">How many you want to sell</string>
+    <string name="add_this_product">Add This Product</string>
+    <string name="todo">TODO</string>
+    <string name="your_product_name">Your Product Name</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="_4xl">4XL</string>
+    <string name="_3xl">3XL</string>
+    <string name="xxl">XXL</string>
+    <string name="xl">XL</string>
+    <string name="l">L</string>
+    <string name="m">M</string>
+    <string name="s">S</string>
+    <string name="other_explain_in_description">Other (explain in description)</string>
+    <string name="hoodie">Hoodie</string>
+    <string name="t_shirt_half_sleeve">T Shirt Half Sleeve</string>
+    <string name="t_shirt_full_sleeve">T Shirt full_Sleeve</string>
+    <string name="polo_shirt_half_sleeve">Polo Shirt Half Sleeve</string>
+    <string name="polo_shirt_full_sleeve">Polo Shirt full_Sleeve</string>
+    <string name="add_more_pics">ADD more Pics</string>
+    <array name="Catagory">
+        <item>T shirt Half Sleeve</item>
+        <item>Hoodie</item>
+        <item>T shirt Full Sleve </item>
+        <item>Polo Shirt Half Sleve</item>
+        <item>Polo Shirt Full Sleve</item>
+    </array>
+</resources>

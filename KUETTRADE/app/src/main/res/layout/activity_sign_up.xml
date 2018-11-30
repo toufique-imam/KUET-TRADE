@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorPrimary"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LL1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/image_view_sign_up_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/todo"
+        android:background="@drawable/ic_money_off_black_24dp" />
+    <EditText
+        android:id="@+id/edit_text_sign_up_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:hint="@string/your_mail"
+        android:textColorHint="#FFF"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        android:padding="20dp" tools:targetApi="o"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/edit_text_sign_up_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="3"
+            android:textColorHint="#FFF"
+            android:hint="@string/your_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:padding="20dp"
+            tools:targetApi="o"/>
+
+        <Button
+            android:id="@+id/button_sign_up_show_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/show" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_sign_up_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up" />
+    <ProgressBar
+        android:id="@+id/progress_bar_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+</LinearLayout>

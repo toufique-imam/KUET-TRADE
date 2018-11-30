@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/RoyalBlue"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:padding="5dp">
+
+        <TextView
+            android:textColor="@color/GhostWhite"
+            android:id="@+id/text_view_loaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loc Name"
+            android:layout_weight="2"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_weight="1"
+            android:id="@+id/image_view_day_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_money_off_black_24dp" />
+
+        <TextView
+            android:textColor="@color/WhiteSmoke"
+            android:layout_weight="2"
+            android:id="@+id/text_view_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loc temp"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyle_view_shop_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

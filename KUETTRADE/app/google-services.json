@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "644014748308",
+    "firebase_url": "https://kuettrade.firebaseio.com",
+    "project_id": "kuettrade",
+    "storage_bucket": "kuettrade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644014748308:android:ab3d10fb168ac857",
+        "android_client_info": {
+          "package_name": "com.sabertooth.kuettrade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644014748308-2se6kin9r5v11t0igkru72mv1br3ap35.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sabertooth.kuettrade",
+            "certificate_hash": "2194e6a850cc66cbf2335f8bc901f644bdb289fe"
+          }
+        },
+        {
+          "client_id": "644014748308-ck2ibdv5l2od5q1lbstvu3e8dg1qcqgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBtaNZSojxz9cOSG3C3yBWk1N9bnSFQxU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644014748308-ck2ibdv5l2od5q1lbstvu3e8dg1qcqgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
