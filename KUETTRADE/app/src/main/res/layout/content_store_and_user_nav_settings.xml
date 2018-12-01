@@ -4,12 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".store_and_user_nav_settings"
     tools:showIn="@layout/app_bar_store_and_user_nav_settings">
+
     <include
         layout="@layout/weather_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_t_shirt_half"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_t_shirt_half"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_t_shirt_full"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_t_shirt_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"  />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_polo_shirt_half"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_polo_shirt_half"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"  />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_polo_shirt_full"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_polo_shirt_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_hoodie"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_hoodie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

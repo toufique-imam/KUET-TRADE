@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/DarkSeaGreen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:weightSum="8">
+
+        <CheckBox
+            android:id="@+id/checkbox_S"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/s" />
+
+        <CheckBox
+            android:id="@+id/checkbox_M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/m" />
+
+        <CheckBox
+            android:id="@+id/checkbox_L"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/l" />
+
+        <CheckBox
+            android:id="@+id/checkbox_XL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/xl" />
+
+        <CheckBox
+            android:id="@+id/checkbox_XXL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/xxl" />
+
+        <CheckBox
+            android:id="@+id/checkbox_3XL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_3xl" />
+
+        <CheckBox
+            android:id="@+id/checkbox_4XL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_4xl" />
+    </LinearLayout>
