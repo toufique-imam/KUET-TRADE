@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:buttonTint="@color/Black"
         android:padding="5dp">
 
         <LinearLayout
@@ -23,15 +24,19 @@
                 android:id="@+id/image_view_product_pic_f"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:buttonTint="@color/Black"
                 android:layout_margin="5dp"
+                android:background="@color/Black"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/todo"
                 app:srcCompat="@color/Azure"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
+                android:background="@color/Black"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:buttonTint="@color/Black"
                 android:id="@+id/image_view_product_pic_b"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -42,12 +47,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:background="@color/Gold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2">
 
             <CheckBox
+                android:buttonTint="@color/Black"
                 android:id="@+id/checkbox_t_shirt_half"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +62,7 @@
                 android:text="@string/t_shirt_half_sleeve" />
 
             <CheckBox
+                android:buttonTint="@color/Black"
                 android:id="@+id/checkbox_t_shirt_full"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,6 +71,7 @@
         </LinearLayout>
 
         <LinearLayout
+
             android:background="@color/BurlyWood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,12 +80,14 @@
             <CheckBox
                 android:id="@+id/checkbox_polo_half"
                 android:layout_width="wrap_content"
+                android:buttonTint="@color/Black"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/polo_shirt_half_sleeve" />
 
             <CheckBox
                 android:id="@+id/checkbox_polo_full"
+                android:buttonTint="@color/Black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -88,6 +99,7 @@
             android:layout_height="wrap_content"
             android:background="@color/LightGoldenrodYellow">
             <CheckBox
+                android:buttonTint="@color/Black"
                 android:id="@+id/checkbox_hoodie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,7 +111,9 @@
             android:id="@+id/edit_text_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:hint="@string/your_product_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
@@ -110,7 +124,9 @@
             android:id="@+id/edit_text_product_descriptio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:hint="@string/description"
             android:importantForAutofill="no"
             android:inputType="text"
@@ -121,7 +137,9 @@
             android:id="@+id/edit_text_product_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:hint="@string/price"
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
@@ -130,6 +148,9 @@
 
         <include
             layout="@layout/product_size"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -137,7 +158,9 @@
             android:id="@+id/edit_text_product_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:hint="@string/how_many_you_want_to_sell"
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
@@ -151,7 +174,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:padding="5dp"
             android:text="@string/add_this_product" />
     </LinearLayout>

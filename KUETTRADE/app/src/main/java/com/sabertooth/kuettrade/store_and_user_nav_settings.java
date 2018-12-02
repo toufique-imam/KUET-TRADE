@@ -3,9 +3,8 @@ package com.sabertooth.kuettrade;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,17 +12,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class store_and_user_nav_settings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_and_user_nav_settings);
         Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        mAuth=FirebaseAuth.getInstance();
         FloatingActionButton fab =  findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +92,14 @@ public class store_and_user_nav_settings extends AppCompatActivity
         } else if (id == R.id.nav_user_settings) {
             Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_send) {
+        }
+        else if(id==R.id.nav_user_logout){
+            mAuth.signOut();
+            Intent intent=new Intent(getApplicationContext(),SignIn_Activity.class);
+            finish();
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_send) {
             //send Mail
         }
 

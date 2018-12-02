@@ -26,7 +26,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@color/Navy" />
-
         <TextView
             android:id="@+id/text_view_settings_user_name"
             android:layout_width="match_parent"
@@ -39,6 +38,14 @@
             android:textSize="20sp" />
     </FrameLayout>
 
+    <TextView
+        android:id="@+id/text_view_settings_user_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Email"
+        android:textAlignment="center"
+        android:textSize="17sp" />
     <TextView
         android:id="@+id/text_view_settings_user_address"
         android:layout_width="match_parent"
