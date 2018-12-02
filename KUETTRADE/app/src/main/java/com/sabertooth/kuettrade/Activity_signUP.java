@@ -41,8 +41,8 @@ public class Activity_signUP extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Uri imageUri;
     int imagenow;
-    String image_url, profle_pic_url, cover_pic_url;
     Bitmap bitmap;
+    String image_url, profle_pic_url, cover_pic_url;
     ProgressDialog pDialog;
     Boolean f1, f2;
     Boolean image_indicator;
@@ -73,6 +73,8 @@ public class Activity_signUP extends AppCompatActivity {
         coverImg = findViewById(R.id.image_view_sign_up_cover_pic);
         proImg = findViewById(R.id.image_view_sign_up_profile_pic);
         bt_show = findViewById(R.id.button_sign_up_show_password);
+        pDialog = new ProgressDialog(Activity_signUP.this);
+        pDialog.setCancelable(false);
         proImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +112,6 @@ public class Activity_signUP extends AppCompatActivity {
         bt_action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pDialog = new ProgressDialog(Activity_signUP.this);
                 pDialog.setMessage("Signing You Up...");
                 pDialog.setCancelable(false);
                 register_user();
@@ -197,6 +198,7 @@ public class Activity_signUP extends AppCompatActivity {
             et_pass.requestFocus();
             return;
         }
+        pDialog.setMessage("Signing You Up....");
         pDialog.show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -221,10 +223,8 @@ public class Activity_signUP extends AppCompatActivity {
     }
 
     private void update_user() {
-        //pDialog.setMessage("Updating User Image");
+        Log.d("CAME","update_user");
         FirebaseUser user = mAuth.getCurrentUser();
-        //Log.d("FUCK",user.getUid());
-        Log.d("FCK", profle_pic_url);
         if (user != null && profle_pic_url != null) {
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(user_name)
@@ -234,7 +234,8 @@ public class Activity_signUP extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "updated Profile", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "updated Profile", Toast.LENGTH_LONG).show();
+                        Log.d("CAME","updated_user");
                         uploadUserDatainDatabase();
                     }
                 }
@@ -242,41 +243,39 @@ public class Activity_signUP extends AppCompatActivity {
         }
     }
 
+    private void toaster(String s) {
+        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+    }
+
     private void uploadUserDatainDatabase() {
-        // pDialog.setMessage("Uploading User Data");
-        //  Log.d("PCK",cover_pic_url);
+        Log.d("CAME","upload_data_user");
         FirebaseUser user_ = mAuth.getCurrentUser();
         if (user_ != null) {
             String uid = user_.getUid();
             if (!uid.isEmpty()) {
-                databaseUser = FirebaseDatabase.getInstance().getReference("user").child(uid);
-                String id = databaseUser.push().getKey();
-                Log.d("coverpic", cover_pic_url);
-                User_class user_now = new User_class(uid, id, user_name, email, address, phone1, phone2, profle_pic_url, cover_pic_url);
-                if (id != null) {
-                    try {
-                        databaseUser.child(id).setValue(user_now);
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "id is Empty", Toast.LENGTH_LONG).show();
+                databaseUser = FirebaseDatabase.getInstance().getReference("users");
+                User_class user_now = new User_class(uid, user_name, email, address, phone1, phone2, profle_pic_url, cover_pic_url,password);
+                try {
+                    Log.d("CAME","uploading_data_user");
+                    databaseUser.child(uid).setValue(user_now);
+                } catch (Exception e) {
+                    toaster(e.getMessage());
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "uid is Empty", Toast.LENGTH_LONG).show();
+                toaster("UId Is Empty");
             }
         } else {
-            Toast.makeText(getApplicationContext(), "user is Empty", Toast.LENGTH_LONG).show();
+            toaster("USER is empty");
         }
+        Log.d("CAME","uploaded_data_user");
     }
-
-
     private void uploadImageInFirebaseStorage(String loc) {
-        //pDialog.setMessage("Uploading User Image");
+        pDialog.setMessage("Uploading User Image");
+        pDialog.show();
         StorageReference profileImageRef =
                 FirebaseStorage.getInstance().getReference(loc + "/" + System.currentTimeMillis() + ".jpg");
         if (imageUri != null) {
-            Log.d("LOG_PH4", imageUri.toString());
+     //       Log.d("LOG_PH4", imageUri.toString());
             //pgb.setVisibility(View.VISIBLE);
             final StorageReference photoStorageReference = profileImageRef.child("profilepics/" + System.currentTimeMillis() + ".jpg");
             photoStorageReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -290,6 +289,7 @@ public class Activity_signUP extends AppCompatActivity {
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
+                    pDialog.dismiss();
                     //      pgb.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
@@ -298,7 +298,7 @@ public class Activity_signUP extends AppCompatActivity {
                             profle_pic_url = image_url;
                         else
                             cover_pic_url = image_url;
-                        Log.d("WHAT", image_url);
+       //                 Log.d("WHAT", image_url);
                     } else {
                         Toast.makeText(getApplicationContext(), "upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
