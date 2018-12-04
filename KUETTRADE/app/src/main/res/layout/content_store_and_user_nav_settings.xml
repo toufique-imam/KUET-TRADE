@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/SlateGray"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".store_and_user_nav_settings"
+    android:background="@color/DarkRed"
     tools:showIn="@layout/app_bar_store_and_user_nav_settings">
 
     <include
@@ -15,103 +15,130 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
 
-        <android.support.design.card.MaterialCardView
-            android:id="@+id/tv_tsh"
-            android:padding="10dp"
-            android:layout_margin="10dp"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:orientation="vertical">
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_view_t_shirt_half"
+                style="@style/card_view_style">
 
-            <TextView
-                android:padding="30dp"
-                android:fontFamily="@font/google_sans_bold"
-                android:background="@color/indigodye"
-                android:textColor="@color/white"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="T shirts Half Sleeve....." />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_t_shirt_half"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_view_t_shirt_full"
+                style="@style/card_view_style">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="T Shirts Full Sleeve....." />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_t_shirt_full"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_view_polo_shirt_half"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="T Shirt Half Sleeve" />
+                android:layout_height="200dp"
+                android:layout_margin="5dp">
 
-        </android.support.design.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-        <android.support.design.card.MaterialCardView
-            android:id="@+id/tv_tsf"
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <TextView
-                android:padding="30dp"
-                android:background="@color/indigodye"
-                android:textColor="@color/white"
-                android:fontFamily="@font/google_sans_bold"
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Polo Shirts Half Sleeve....." />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_polo_shirt_half"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_view_polo_shirt_full"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="T Shirt Full Sleeve" />
+                android:layout_height="200dp"
+                android:layout_margin="5dp">
 
-        </android.support.design.card.MaterialCardView>
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Polo Shirts Full Sleeve....." />
 
-        <android.support.design.card.MaterialCardView
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_psh"
-            android:layout_weight="1">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_polo_shirt_full"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </android.support.design.card.MaterialCardView>
 
-            <TextView
-                android:padding="30dp"
-                android:fontFamily="@font/google_sans_bold"
-                android:background="@color/indigodye"
-                android:textColor="@color/white"
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_view_hoodie"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Polo Shirt Half Sleeve" />
+                android:layout_height="200dp"
+                android:layout_margin="5dp">
 
-        </android.support.design.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <android.support.design.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tv_psf"
-            android:layout_weight="1">
-            <TextView
-                android:padding="30dp"
-                android:background="@color/indigodye"
-                android:textColor="@color/white"
-                android:fontFamily="@font/google_sans_bold"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Polo Shirt Full Sleeve" />
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hoodie....." />
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_hoodie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </android.support.design.card.MaterialCardView>
 
-        </android.support.design.card.MaterialCardView>
-    </LinearLayout>
-
-    <android.support.design.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:id="@+id/tv_hoodie"
-        android:layout_height="wrap_content">
-        <TextView
-            android:padding="30dp"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:background="@color/indigodye"
-            android:textColor="@color/white"
-            android:fontFamily="@font/google_sans_bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hoodie" />
-
-    </android.support.design.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

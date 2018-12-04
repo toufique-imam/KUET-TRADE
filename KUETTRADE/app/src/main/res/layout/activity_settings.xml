@@ -25,14 +25,14 @@
                 android:background="@color/SlateGray"
                 android:scaleType="fitXY" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image_view_settings_profile_pic"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp"
-                android:background="@color/DarkSeaGreen"
-                android:scaleType="fitXY" />
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000" />
         </FrameLayout>
 
         <TextView

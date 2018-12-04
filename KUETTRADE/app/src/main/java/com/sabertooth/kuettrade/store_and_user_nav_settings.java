@@ -2,9 +2,9 @@ package com.sabertooth.kuettrade;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.card.MaterialCardView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,6 +12,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -30,26 +32,34 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class store_and_user_nav_settings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    String API="http://api.apixu.com/v1/current.json?key=b349e54ea3394aa1b9f90815182911&q=Fulbari";
     static User_class user_x;
     DatabaseReference UserRef, productsref;
     private FirebaseAuth mAuth;
-    ImageView propic, coverPic;
+    ImageView coverPic;
+    CircleImageView propic,weather_pic;
     LinearLayout nav_lin_layout;
-    TextView nav_user_name, nav_user_mail;
+    TextView nav_user_name, nav_user_mail,weather_loc,weather_temp;
     Toolbar toolbar;
     FloatingActionButton fab;
     DrawerLayout drawer;
     NavigationView navigationView;
     View headerView;
-    MaterialCardView tsh, tsf, psh, psf, hod;
-    ArrayList<Product_class> ar_tsh, ar_tsf, ar_psh, ar_psf, ar_hod, my_items;
+    RecyclerView tsh, tsf, psh, psf, hod;
+    Adapter_1 adp1, adp2, adp3, adp4, adp5;
+    LinearLayoutManager llm1, llm2, llm3, llm4, llm5;
+    static ArrayList<Product_class> ar_tsh, ar_tsf, ar_psh, ar_psf, ar_hod, my_items;
 
     private void toaster(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
@@ -59,6 +69,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
     protected void onStart() {
         super.onStart();
         fetch_data();
+        log_print();
     }
 
     @Override
@@ -82,15 +93,12 @@ public class store_and_user_nav_settings extends AppCompatActivity
         RetriveUserInfo();
         fetch_data();
         log_print();
-        tsf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                log_print();
-            }
-        });
     }
 
     private void initialize() {
+        weather_pic=findViewById(R.id.image_view_day_stat);
+        weather_loc=findViewById(R.id.text_view_loaction);
+        weather_temp=findViewById(R.id.text_view_temp);
         user_x = new User_class();
         ar_hod = new ArrayList<>();
         ar_psf = new ArrayList<>();
@@ -98,16 +106,16 @@ public class store_and_user_nav_settings extends AppCompatActivity
         ar_tsf = new ArrayList<>();
         ar_tsh = new ArrayList<>();
         my_items = new ArrayList<>();
+        hod = findViewById(R.id.recycler_view_hoodie);
+        psf = findViewById(R.id.recycler_view_polo_shirt_full);
+        psh = findViewById(R.id.recycler_view_polo_shirt_half);
+        tsf = findViewById(R.id.recycler_view_t_shirt_full);
+        tsh = findViewById(R.id.recycler_view_t_shirt_half);
         productsref = FirebaseDatabase.getInstance().getReference("products");
         mAuth = FirebaseAuth.getInstance();
         UserRef = FirebaseDatabase.getInstance().getReference("users");
         RetriveUserInfo();
         fetch_data();
-        tsh = findViewById(R.id.tv_tsh);
-        tsf = findViewById(R.id.tv_tsf);
-        psf = findViewById(R.id.tv_psf);
-        psh = findViewById(R.id.tv_psh);
-        hod = findViewById(R.id.tv_hoodie);
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
         drawer = findViewById(R.id.drawer_layout);
@@ -118,14 +126,16 @@ public class store_and_user_nav_settings extends AppCompatActivity
         nav_lin_layout = headerView.findViewById(R.id.linear_layout_nav);
         nav_user_name = headerView.findViewById(R.id.text_view_nav_user_name);
         nav_user_mail = headerView.findViewById(R.id.text_view_nav_user_mail);
+        get_weather gc=new get_weather();
+        gc.execute();
     }
-    void log_print()
-    {
-        Log.e("WHAT",ar_tsf.size()+"");
-        Log.e("WHAT",ar_tsh.size()+"");
-        Log.e("WHAT",ar_psf.size()+"");
-        Log.e("WHAT",ar_psh.size()+"");
-        Log.e("WHAT",ar_hod.size()+"");
+
+    void log_print() {
+        Log.e("WHAT", ar_tsf.size() + "");
+        Log.e("WHAT", ar_tsh.size() + "");
+        Log.e("WHAT", ar_psf.size() + "");
+        Log.e("WHAT", ar_psh.size() + "");
+        Log.e("WHAT", ar_hod.size() + "");
     }
 
     private void fetch_data() {
@@ -141,6 +151,10 @@ public class store_and_user_nav_settings extends AppCompatActivity
                         my_items.add(pc);
                     }
                 }
+                adp1 = new Adapter_1(getApplicationContext(), ar_hod);
+                llm1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                hod.setAdapter(adp1);
+                hod.setLayoutManager(llm1);
             }
 
             @Override
@@ -160,6 +174,10 @@ public class store_and_user_nav_settings extends AppCompatActivity
                         my_items.add(pc);
                     }
                 }
+                adp2 = new Adapter_1(getApplicationContext(), ar_psf);
+                llm2 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                psf.setLayoutManager(llm2);
+                psf.setAdapter(adp2);
             }
 
             @Override
@@ -179,6 +197,10 @@ public class store_and_user_nav_settings extends AppCompatActivity
                         my_items.add(pc);
                     }
                 }
+                adp3 = new Adapter_1(getApplicationContext(), ar_psh);
+                llm3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                psh.setAdapter(adp3);
+                psh.setLayoutManager(llm3);
             }
 
             @Override
@@ -198,6 +220,10 @@ public class store_and_user_nav_settings extends AppCompatActivity
                         my_items.add(pc);
                     }
                 }
+                adp4 = new Adapter_1(getApplicationContext(), ar_tsf);
+                llm4 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                tsf.setLayoutManager(llm4);
+                tsf.setAdapter(adp4);
             }
 
             @Override
@@ -217,6 +243,10 @@ public class store_and_user_nav_settings extends AppCompatActivity
                         my_items.add(pc);
                     }
                 }
+                adp5 = new Adapter_1(getApplicationContext(), ar_tsh);
+                llm5 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                tsh.setAdapter(adp5);
+                tsh.setLayoutManager(llm5);
             }
 
             @Override
@@ -338,5 +368,46 @@ public class store_and_user_nav_settings extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    private  class get_weather extends AsyncTask<Void,Void,Void>{
+        double temp_c;
+        String url;
+        String condition;
+        @Override
+        protected Void doInBackground(Void... voids) {
+            HttpHandler sh=new HttpHandler();
+            String jsnStr=sh.makeServiceCall(API);
+            if(!jsnStr.isEmpty()){
+                try{
+                    JSONObject jsonObject=new JSONObject(jsnStr);
+                    JSONObject current;
+                    try{
+                        current= (JSONObject) jsonObject.get("current");
+                        temp_c=current.getDouble("temp_c");
+                        JSONObject cond=(JSONObject)current.get("condition");
+                        condition= cond.getString("text");
+                        url=cond.getString("icon");
+                    }
+                    catch (JSONException e){
+                        e.printStackTrace();
+                        toaster(e.getMessage());
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    toaster(e.getMessage());
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            weather_loc.setText(condition);
+            weather_temp.setText(temp_c+"℃");
+            Log.e("URLHERE",url);
+            String finalurl="http:"+url;
+            Picasso.get().load(finalurl).into(weather_pic);
+        }
     }
 }

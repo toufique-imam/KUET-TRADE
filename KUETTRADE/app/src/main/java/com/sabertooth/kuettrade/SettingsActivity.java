@@ -11,10 +11,13 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static com.sabertooth.kuettrade.store_and_user_nav_settings.user_x;
 
 public class SettingsActivity extends AppCompatActivity {
-    ImageView coverPic,proPic;
+    ImageView coverPic;
+    CircleImageView proPic;
     TextView name,email,address,phone1,phone2;
     Button pass;
     FloatingActionButton fab;

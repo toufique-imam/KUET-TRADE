@@ -29,7 +29,7 @@ class viewHolder extends RecyclerView.ViewHolder {
 }
 public class Adapter_1  extends  RecyclerView.Adapter<viewHolder>{
     Context ctx;
-    static ArrayList<Product_class>tmp_data;
+    ArrayList<Product_class>tmp_data;
     public Adapter_1(Context cntxt,ArrayList<Product_class>tmp){
         ctx=cntxt;
         tmp_data=tmp;

@@ -13,8 +13,9 @@
 
         <ImageView
             android:id="@+id/item_image"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
+            android:scaleType="fitXY"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
             android:background="@color/Navy" />
 
         <LinearLayout
@@ -25,7 +26,7 @@
                 android:layout_gravity="left"
                 android:id="@+id/item_name"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:padding="4dp"
                 android:textSize="17sp"
                 android:layout_weight="1"
@@ -36,7 +37,7 @@
                 android:id="@+id/item_price"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:padding="4dp"
                 android:text="100/-" />
         </LinearLayout>

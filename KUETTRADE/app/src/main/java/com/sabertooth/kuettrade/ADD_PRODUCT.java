@@ -209,7 +209,6 @@ public class ADD_PRODUCT extends AppCompatActivity {
         }
     }
 
-
     private void showImageChooser() {
         Intent intt = new Intent();
         intt.setType("image/*");
@@ -228,7 +227,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
             Uri imageUrix = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUrix);
-                Bitmap result = Bitmap.createScaledBitmap(bitmap, imgwid, 200, false);
+                Bitmap result = Bitmap.createScaledBitmap(bitmap, 140, 120, false);
                 imageUri = getImageUri(getApplicationContext(), result);
                 ImageView imageView = findViewById(imagenow);
                 imageView.setImageBitmap(bitmap);
