@@ -42,7 +42,14 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:text="Product name" />
-
+            <TextView
+                android:id="@+id/text_view_my_prod_cat"
+                android:padding="5dp"
+                android:layout_margin="2dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Product catagory" />
             <TextView
                 android:id="@+id/text_view_my_prod_price"
                 android:padding="5dp"

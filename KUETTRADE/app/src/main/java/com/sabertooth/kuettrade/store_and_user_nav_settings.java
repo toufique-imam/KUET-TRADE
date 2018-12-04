@@ -139,6 +139,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
     }
 
     private void fetch_data() {
+        my_items.clear();
         DatabaseReference hood = productsref.child("Hoodie");
         hood.addValueEventListener(new ValueEventListener() {
             @Override

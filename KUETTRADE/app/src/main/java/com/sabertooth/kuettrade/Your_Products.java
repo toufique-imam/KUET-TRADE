@@ -23,7 +23,7 @@ public class Your_Products extends AppCompatActivity {
         Log.e("FUCK",tmp.size()+"");
         recyclerView=findViewById(R.id.recycler_view_your_products);
         linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        adapter_your_prod=new Adapter_your_prod(this,my_items);
+        adapter_your_prod=new Adapter_your_prod(this,tmp);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter_your_prod);
     }

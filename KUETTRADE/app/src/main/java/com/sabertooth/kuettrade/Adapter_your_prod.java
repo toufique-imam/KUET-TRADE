@@ -1,6 +1,7 @@
 package com.sabertooth.kuettrade;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -18,11 +19,12 @@ import java.util.ArrayList;
 
 class viewholder_your_prod extends RecyclerView.ViewHolder {
     ImageView img_f, img_b;
-    TextView name_, price_;
+    TextView name_, price_,cata_;
     CardView cv;
 
     public viewholder_your_prod(@NonNull View itemView) {
         super(itemView);
+        cata_=itemView.findViewById(R.id.text_view_my_prod_cat);
         img_f = itemView.findViewById(R.id.image_view_my_prod_f);
         img_b = itemView.findViewById(R.id.image_view_my_prod_b);
         cv = itemView.findViewById(R.id.card_view_your_products);
@@ -33,10 +35,11 @@ class viewholder_your_prod extends RecyclerView.ViewHolder {
 
 public class Adapter_your_prod extends RecyclerView.Adapter<viewholder_your_prod> {
     Context context;
+    static  Product_class use_me;
     ArrayList<Product_class> tmp_data;
-
     public Adapter_your_prod(Context context, ArrayList<Product_class> tmp_data) {
         this.context = context;
+        use_me=new Product_class();
         this.tmp_data = tmp_data;
     }
 
@@ -49,6 +52,7 @@ public class Adapter_your_prod extends RecyclerView.Adapter<viewholder_your_prod
 
     @Override
     public void onBindViewHolder(@NonNull viewholder_your_prod viewholder_your_prod, final int i) {
+        use_me=tmp_data.get(i);
         try {
             Picasso.get().load(tmp_data.get(i).image_front).into(viewholder_your_prod.img_f);
             Picasso.get().load(tmp_data.get(i).image_back).into(viewholder_your_prod.img_b);
@@ -56,11 +60,20 @@ public class Adapter_your_prod extends RecyclerView.Adapter<viewholder_your_prod
             Log.e("LOGME", e.getMessage());
             //Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
+        viewholder_your_prod.cata_.setText(tmp_data.get(i).type);
         viewholder_your_prod.price_.setText(tmp_data.get(i).price+"/-");
         viewholder_your_prod.name_.setText(tmp_data.get(i).name);
+        viewholder_your_prod.cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,ItemDetails_activity.class);
+                intent.putExtra("MY PRODUCT",true);
+                intent.putExtra("idx",i);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
     }
-
     @Override
     public int getItemCount() {
         return tmp_data.size();

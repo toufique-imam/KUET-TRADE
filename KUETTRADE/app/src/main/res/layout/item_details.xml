@@ -76,5 +76,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:visibility="gone"
+                android:id="@+id/button_edit_button"
+                android:textColor="@color/AliceBlue"
+                android:background="@color/DarkGoldenrod"
+                android:textAlignment="center"
+                android:text="Edit"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:visibility="gone"
+                android:id="@+id/button_delete"
+                android:background="@color/Black"
+                android:textColor="@color/BlanchedAlmond"
+                android:textAlignment="center"
+                android:text="Delete"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
