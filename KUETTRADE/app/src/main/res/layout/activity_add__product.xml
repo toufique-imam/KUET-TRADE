@@ -20,28 +20,15 @@
             android:layout_height="200dp">
 
             <ImageView
-                android:layout_weight="1"
                 android:id="@+id/image_view_product_pic_f"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:buttonTint="@color/Black"
-                android:layout_margin="5dp"
-                android:background="@color/Black"
-                android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/todo"
+                style="@style/Product_Image_Main"
                 app:srcCompat="@color/Azure"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                 />
 
             <ImageView
-                android:background="@color/Black"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:buttonTint="@color/Black"
                 android:id="@+id/image_view_product_pic_b"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/todo"
+                style="@style/Product_Image_Main"
                 app:srcCompat="@color/Azure"
                 tools:srcCompat="@tools:sample/avatars" />
         </LinearLayout>
@@ -54,6 +41,7 @@
             android:weightSum="2">
 
             <CheckBox
+                android:fontFamily="@font/google_sans_bold"
                 android:buttonTint="@color/Black"
                 android:id="@+id/checkbox_t_shirt_half"
                 android:layout_width="wrap_content"

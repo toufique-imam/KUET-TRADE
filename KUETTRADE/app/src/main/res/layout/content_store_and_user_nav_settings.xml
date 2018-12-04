@@ -7,7 +7,7 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".store_and_user_nav_settings"
-    android:background="@color/DarkRed"
+    android:background="@color/darkSlateGray"
     tools:showIn="@layout/app_bar_store_and_user_nav_settings">
 
     <include
@@ -34,9 +34,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/Text_view_Store_Header"
                         android:text="T shirts Half Sleeve....." />
 
                     <android.support.v7.widget.RecyclerView
@@ -56,9 +54,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/Text_view_Store_Header"
                         android:text="T Shirts Full Sleeve....." />
 
                     <android.support.v7.widget.RecyclerView
@@ -80,9 +76,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/Text_view_Store_Header"
                         android:text="Polo Shirts Half Sleeve....." />
 
                     <android.support.v7.widget.RecyclerView
@@ -104,9 +98,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/Text_view_Store_Header"
                         android:text="Polo Shirts Full Sleeve....." />
 
                     <android.support.v7.widget.RecyclerView
@@ -128,9 +120,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/Text_view_Store_Header"
                         android:text="Hoodie....." />
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_view_hoodie"

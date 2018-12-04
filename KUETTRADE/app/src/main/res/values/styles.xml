@@ -21,13 +21,31 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:fontFamily">@font/google_sans_bold</item>
-        <item name="android:padding">25dp</item>
+        <item name="android:padding">20dp</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="card_view_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">200dp</item>
         <item name="android:layout_margin">5dp</item>
+    </style>
+    <style name="Text_view_Store_Header">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+    <style name="Product_Image_Main">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:buttonTint">@color/Black</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@color/Black</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:contentDescription">@string/todo</item>
+
+
     </style>
 </resources>

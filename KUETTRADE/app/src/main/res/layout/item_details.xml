@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="5dp">
     <LinearLayout
@@ -10,22 +11,15 @@
         android:layout_height="200dp">
         <ImageView
             android:id="@+id/image_view_details_product_pic_front"
-            android:background="@color/BlanchedAlmond"
-            android:padding="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_weight="1"/>
+            style="@style/Product_Image_Main"
+            app:srcCompat="@color/Azure"
+            tools:srcCompat="@tools:sample/avatars"/>
         <ImageView
             android:id="@+id/image_view_details_product_pic_back"
-            android:background="@color/Beige"
-            android:padding="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_weight="1"/>
+            style="@style/Product_Image_Main"
+            app:srcCompat="@color/Azure"
+            tools:srcCompat="@tools:sample/avatars"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
