@@ -146,13 +146,13 @@ public class Activity_signUP extends AppCompatActivity {
             Uri imageUrix = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUrix);
-                Bitmap result=Bitmap.createScaledBitmap(bitmap,imgwid,imghight,false);
+                Bitmap result=Bitmap.createScaledBitmap(bitmap,imgwid/2,200,false);
                 imageUri=getImageUri(getApplicationContext(),result);
                 ImageView imageView = findViewById(imagenow);
                 imageView.setImageBitmap(bitmap);
                 String loc;
-                if (image_indicator) loc = "profilePic";
-                else loc = "coverPic";
+                if (image_indicator) loc = "front";
+                else loc = "back";
                 uploadImageInFirebaseStorage(loc);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.sabertooth.kuettrade;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,14 +26,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.sabertooth.kuettrade.store_and_user_nav_settings.user_x;
 
 public class ADD_PRODUCT extends AppCompatActivity {
-    ImageView front_img, back_img;
     private static final int REQ_CODE = 1;
+    ImageView front_img, back_img;
     Uri imageUri;
     int imagenow;
     Bitmap bitmap;
@@ -45,15 +48,19 @@ public class ADD_PRODUCT extends AppCompatActivity {
     boolean image_indicator;
     User_class user_c = user_x;
     Product_class pc;
+    int imgwid;
     DatabaseReference productRef;
+    Display screen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__product);
         f1 = f2 = false;
+        screen = getWindowManager().getDefaultDisplay();
         pc = new Product_class();
         image_indicator = false;
+        imgwid = screen.getWidth();
         front_img = findViewById(R.id.image_view_product_pic_f);
         back_img = findViewById(R.id.image_view_product_pic_b);
         product_name = findViewById(R.id.edit_text_product_name);
@@ -155,7 +162,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
             toaster(e.getMessage());
         }
         try {
-            if (amoun > 0 && pric > 0 && !nam.isEmpty() && !size.isEmpty() && !cat.isEmpty() &&  !front_url.isEmpty()) {
+            if (amoun > 0 && pric > 0 && !nam.isEmpty() && !size.isEmpty() && !cat.isEmpty() && !front_url.isEmpty()) {
                 pc.amount = amoun;
                 pc.address = user_c.Address;
                 pc.description = dess;
@@ -176,8 +183,15 @@ public class ADD_PRODUCT extends AppCompatActivity {
         }
     }
 
+    private Uri getImageUri(Context context, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
     private void upload_product() {
-        if (!user_c.uid.isEmpty() &&  f1) {
+        if (!user_c.uid.isEmpty() && f1) {
             productRef = FirebaseDatabase.getInstance().getReference("products");
             DatabaseReference tmp;
             for (String s : cat) {
@@ -185,7 +199,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
                 String idx = tmp.push().getKey();
                 try {
                     pc.id = idx;
-                    pc.type=s;
+                    pc.type = s;
                     tmp.child(idx).setValue(pc);
                     toaster("Product Added");
                 } catch (Exception e) {
@@ -211,19 +225,20 @@ public class ADD_PRODUCT extends AppCompatActivity {
     protected void onActivityResult(int req_code, int res_code, Intent data) {
         super.onActivityResult(req_code, res_code, data);
         if (req_code == REQ_CODE && res_code == RESULT_OK && null != data) {
-            imageUri = data.getData();
+            Uri imageUrix = data.getData();
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                //Bitmap result=Bitmap.createScaledBitmap(bitmap,200,200,false);
-                //           imageUri=getImageUri(getApplicationContext(),result);
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUrix);
+                Bitmap result = Bitmap.createScaledBitmap(bitmap, imgwid, 200, false);
+                imageUri = getImageUri(getApplicationContext(), result);
                 ImageView imageView = findViewById(imagenow);
                 imageView.setImageBitmap(bitmap);
                 String loc;
-                if (image_indicator) loc = "front";
-                else loc = "back";
+                if (image_indicator) loc = "profilePic";
+                else loc = "coverPic";
                 uploadImageInFirebaseStorage(loc);
             } catch (IOException e) {
                 e.printStackTrace();
+                toaster(e.getMessage());
             }
         }
     }
