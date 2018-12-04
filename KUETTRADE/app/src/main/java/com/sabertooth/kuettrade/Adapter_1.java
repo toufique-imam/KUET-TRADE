@@ -51,6 +51,7 @@ public class Adapter_1  extends  RecyclerView.Adapter<viewHolder>{
             public void onClick(View v) {
                 Intent show=new Intent(ctx,ItemDetails_activity.class);
                 show.putExtra("idx",i);
+                show.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ctx.startActivity(show);
             }
         });

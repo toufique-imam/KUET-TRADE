@@ -2,7 +2,7 @@
 <resources>
     <color name="dark">#FF222222</color>
     <color name="light">#FFEEEEEE</color>
-    <color name="colorPrimary">#191970</color>
+    <color name="colorPrimary">#00796b</color>
     <color name="teal">#008080</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="Black">#000000</color>
