@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    android:layout_margin="7dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/Navy"
-    android:layout_width="130dp"
-    android:layout_height="130dp">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@color/Navy">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <ImageView
             android:id="@+id/item_image"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/Navy"/>
-        <TextView
-            android:textAlignment="center"
-            android:id="@+id/item_name"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="yoyo"/>
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:background="@color/Navy" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_gravity="left"
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="4dp"
+                android:textSize="17sp"
+                android:layout_weight="1"
+                android:text="yoyo" />
+
+            <TextView
+                android:layout_gravity="right"
+                android:id="@+id/item_price"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="4dp"
+                android:text="100/-" />
+        </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

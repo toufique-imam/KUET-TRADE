@@ -2,8 +2,9 @@ package com.sabertooth.kuettrade;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.card.MaterialCardView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,16 +30,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 
 public class store_and_user_nav_settings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    static BitmapDrawable pp, cp;
+
     static User_class user_x;
+    DatabaseReference UserRef, productsref;
+    private FirebaseAuth mAuth;
     ImageView propic, coverPic;
     LinearLayout nav_lin_layout;
     TextView nav_user_name, nav_user_mail;
-    DatabaseReference UserRef;
-    private FirebaseAuth mAuth;
+    Toolbar toolbar;
+    FloatingActionButton fab;
+    DrawerLayout drawer;
+    NavigationView navigationView;
+    View headerView;
+    MaterialCardView tsh, tsf, psh, psf, hod;
+    ArrayList<Product_class> ar_tsh, ar_tsf, ar_psh, ar_psf, ar_hod, my_items;
 
     private void toaster(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
@@ -46,21 +58,15 @@ public class store_and_user_nav_settings extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        RetriveUserInfo();
+        fetch_data();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user_x = new User_class();
-        pp=new BitmapDrawable();
-        cp=new BitmapDrawable();
         setContentView(R.layout.activity_store_and_user_nav_settings);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        initialize();
         setSupportActionBar(toolbar);
-        mAuth = FirebaseAuth.getInstance();
-        UserRef = FirebaseDatabase.getInstance().getReference("users");
-        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,24 +74,161 @@ public class store_and_user_nav_settings extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        View headerView = navigationView.getHeaderView(0);
+        navigationView.setNavigationItemSelectedListener(this);
+        RetriveUserInfo();
+        fetch_data();
+        log_print();
+        tsf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                log_print();
+            }
+        });
+    }
+
+    private void initialize() {
+        user_x = new User_class();
+        ar_hod = new ArrayList<>();
+        ar_psf = new ArrayList<>();
+        ar_psh = new ArrayList<>();
+        ar_tsf = new ArrayList<>();
+        ar_tsh = new ArrayList<>();
+        my_items = new ArrayList<>();
+        productsref = FirebaseDatabase.getInstance().getReference("products");
+        mAuth = FirebaseAuth.getInstance();
+        UserRef = FirebaseDatabase.getInstance().getReference("users");
+        RetriveUserInfo();
+        fetch_data();
+        tsh = findViewById(R.id.tv_tsh);
+        tsf = findViewById(R.id.tv_tsf);
+        psf = findViewById(R.id.tv_psf);
+        psh = findViewById(R.id.tv_psh);
+        hod = findViewById(R.id.tv_hoodie);
+        toolbar = findViewById(R.id.toolbar);
+        fab = findViewById(R.id.fab);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        headerView = navigationView.getHeaderView(0);
         coverPic = headerView.findViewById(R.id.image_view_nav_cover);
         propic = headerView.findViewById(R.id.imageView_nav_pro_pic);
         nav_lin_layout = headerView.findViewById(R.id.linear_layout_nav);
         nav_user_name = headerView.findViewById(R.id.text_view_nav_user_name);
         nav_user_mail = headerView.findViewById(R.id.text_view_nav_user_mail);
-        navigationView.setNavigationItemSelectedListener(this);
-        RetriveUserInfo();
+    }
+    void log_print()
+    {
+        Log.e("WHAT",ar_tsf.size()+"");
+        Log.e("WHAT",ar_tsh.size()+"");
+        Log.e("WHAT",ar_psf.size()+"");
+        Log.e("WHAT",ar_psh.size()+"");
+        Log.e("WHAT",ar_hod.size()+"");
+    }
+
+    private void fetch_data() {
+        DatabaseReference hood = productsref.child("Hoodie");
+        hood.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ar_hod.clear();
+                for (DataSnapshot x : dataSnapshot.getChildren()) {
+                    Product_class pc = x.getValue(Product_class.class);
+                    ar_hod.add(pc);
+                    if (pc.uid == user_x.uid) {
+                        my_items.add(pc);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                toaster(databaseError.getMessage());
+            }
+        });
+        DatabaseReference polofull = productsref.child("Polo Shirt Full Sleeve");
+        polofull.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ar_psf.clear();
+                for (DataSnapshot x : dataSnapshot.getChildren()) {
+                    Product_class pc = x.getValue(Product_class.class);
+                    ar_psf.add(pc);
+                    if (pc != null && pc.uid.equals(user_x.uid)) {
+                        my_items.add(pc);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                toaster(databaseError.getMessage());
+            }
+        });
+        DatabaseReference polohalf = productsref.child("Polo Shirt Half Sleeve");
+        polohalf.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ar_psh.clear();
+                for (DataSnapshot x : dataSnapshot.getChildren()) {
+                    Product_class pc = x.getValue(Product_class.class);
+                    ar_psh.add(pc);
+                    if (pc != null && pc.uid.equals(user_x.uid)) {
+                        my_items.add(pc);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                toaster(databaseError.getMessage());
+            }
+        });
+        DatabaseReference tsfull = productsref.child("T Shirt Full Sleeve");
+        tsfull.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ar_tsf.clear();
+                for (DataSnapshot x : dataSnapshot.getChildren()) {
+                    Product_class pc = x.getValue(Product_class.class);
+                    ar_tsf.add(pc);
+                    if (pc != null && pc.uid.equals(user_x.uid)) {
+                        my_items.add(pc);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                toaster(databaseError.getMessage());
+            }
+        });
+        DatabaseReference tshalf = productsref.child("T Shirt Half Sleeve");
+        tshalf.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ar_tsh.clear();
+                for (DataSnapshot x : dataSnapshot.getChildren()) {
+                    Product_class pc = x.getValue(Product_class.class);
+                    ar_tsh.add(pc);
+                    if (pc != null && Objects.equals(pc.uid, user_x.uid)) {
+                        my_items.add(pc);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                toaster(databaseError.getMessage());
+            }
+        });
+
     }
 
     private void RetriveUserInfo() {
-        ProgressDialog pgb=new ProgressDialog(this);
+        ProgressDialog pgb = new ProgressDialog(this);
         pgb.setCancelable(false);
         pgb.setMessage("Downloading Data......");
         pgb.show();
@@ -101,11 +244,6 @@ public class store_and_user_nav_settings extends AppCompatActivity
                         Picasso.get().setLoggingEnabled(true);
                         try {
                             Picasso.get().load(downloadurl).into(propic);
-                            try {
-                                pp = ((BitmapDrawable) propic.getDrawable());
-                            } catch (Exception e) {
-                                toaster(e.getMessage());
-                            }
                         } catch (Exception e) {
                             toaster(e.getMessage());
                         }
@@ -130,11 +268,6 @@ public class store_and_user_nav_settings extends AppCompatActivity
                     nav_user_name.setText(user_x.Name);
                     try {
                         Picasso.get().load(user_x.coverPicUrl).into(coverPic);
-                        try {
-                            cp = ((BitmapDrawable) coverPic.getDrawable());
-                        } catch (Exception e) {
-                            toaster(e.getMessage());
-                        }
                     } catch (Exception e) {
                         toaster(e.getMessage());
                     }
@@ -202,7 +335,6 @@ public class store_and_user_nav_settings extends AppCompatActivity
         } else if (id == R.id.nav_send) {
             //send Mail
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

@@ -155,7 +155,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
             toaster(e.getMessage());
         }
         try {
-            if (amoun > 0 && pric > 0 && !nam.isEmpty() && !size.isEmpty() && !cat.isEmpty() && !back_url.isEmpty() && !front_url.isEmpty()) {
+            if (amoun > 0 && pric > 0 && !nam.isEmpty() && !size.isEmpty() && !cat.isEmpty() &&  !front_url.isEmpty()) {
                 pc.amount = amoun;
                 pc.address = user_c.Address;
                 pc.description = dess;
@@ -177,14 +177,15 @@ public class ADD_PRODUCT extends AppCompatActivity {
     }
 
     private void upload_product() {
-        if (!user_c.uid.isEmpty() && f1 && f2) {
-            productRef = FirebaseDatabase.getInstance().getReference(user_c.uid);
+        if (!user_c.uid.isEmpty() &&  f1) {
+            productRef = FirebaseDatabase.getInstance().getReference("products");
             DatabaseReference tmp;
             for (String s : cat) {
                 tmp = productRef.child(s);
                 String idx = tmp.push().getKey();
                 try {
                     pc.id = idx;
+                    pc.type=s;
                     tmp.child(idx).setValue(pc);
                     toaster("Product Added");
                 } catch (Exception e) {

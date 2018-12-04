@@ -7,9 +7,10 @@ public class Product_class {
     Integer price,amount;
     String image_front,image_back;
     ArrayList<String>size;
+    String type;
     Product_class(){}
 
-    public Product_class(String uid, String id, String name, String address, String phone1, String phone2, String description, Integer price, Integer amount, String image_front, String image_back, ArrayList<String> size) {
+    public Product_class(String uid, String id, String name, String address, String phone1, String phone2, String description, Integer price, Integer amount, String image_front, String image_back, ArrayList<String> size, String type) {
         this.uid = uid;
         this.id = id;
         this.name = name;
@@ -22,5 +23,6 @@ public class Product_class {
         this.image_front = image_front;
         this.image_back = image_back;
         this.size = size;
+        this.type = type;
     }
 }

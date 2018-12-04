@@ -9,12 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.sabertooth.kuettrade.store_and_user_nav_settings.cp;
-import static com.sabertooth.kuettrade.store_and_user_nav_settings.pp;
+import com.squareup.picasso.Picasso;
+
 import static com.sabertooth.kuettrade.store_and_user_nav_settings.user_x;
 
 public class SettingsActivity extends AppCompatActivity {
-    ImageView proPic,coverPic;
+    ImageView coverPic,proPic;
     TextView name,email,address,phone1,phone2;
     Button pass;
     FloatingActionButton fab;
@@ -35,12 +35,12 @@ public class SettingsActivity extends AppCompatActivity {
         pass=findViewById(R.id.button_setting_show_password);
         fab=findViewById(R.id.fab_setting);
         try{
-            proPic.setImageBitmap(pp.getBitmap());
+            Picasso.get().load(user_x.proPicUrl).into(proPic);
         }
         catch (Exception e){
             toaster(e.getMessage());
         }try{
-            coverPic.setImageBitmap(cp.getBitmap());
+            Picasso.get().load(user_x.coverPicUrl).into(coverPic);
         }
         catch (Exception e){
             toaster(e.getMessage());

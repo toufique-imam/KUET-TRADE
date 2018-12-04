@@ -1,6 +1,7 @@
 package com.sabertooth.kuettrade;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -40,13 +43,14 @@ public class Activity_signUP extends AppCompatActivity {
     Button bt_action, bt_show;
     private FirebaseAuth mAuth;
     Uri imageUri;
-    int imagenow;
+    int imagenow,imgwid,imghight;
     Bitmap bitmap;
     String image_url, profle_pic_url, cover_pic_url;
     ProgressDialog pDialog;
     Boolean f1, f2;
     Boolean image_indicator;
     DatabaseReference databaseUser;
+    Display screen;
 
     String user_name, address, phone1, phone2, email, password;
 
@@ -61,8 +65,10 @@ public class Activity_signUP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        screen=getWindowManager().getDefaultDisplay();
         f1 = f2 = image_indicator = false;
         mAuth = FirebaseAuth.getInstance();
+        //TextView tv=findViewById(R.id.text_view_t_shirt_half);
         bt_action = findViewById(R.id.button_sign_up_button);
         et_name = findViewById(R.id.edit_text_sign_up_user_name);
         et_mail = findViewById(R.id.edit_text_sign_up_user_mail);
@@ -82,6 +88,7 @@ public class Activity_signUP extends AppCompatActivity {
                 imageUri = null;
                 f1 = true;
                 image_indicator = true;
+                imghight=imgwid=150;
                 imagenow = R.id.image_view_sign_up_profile_pic;
                 showImageChooser();
             }
@@ -93,6 +100,8 @@ public class Activity_signUP extends AppCompatActivity {
                 imageUri = null;
                 f2 = true;
                 image_indicator = false;
+                imghight=160;
+                imgwid=screen.getWidth();
                 imagenow = R.id.image_view_sign_up_cover_pic;
                 showImageChooser();
             }
@@ -134,11 +143,11 @@ public class Activity_signUP extends AppCompatActivity {
     protected void onActivityResult(int req_code, int res_code, Intent data) {
         super.onActivityResult(req_code, res_code, data);
         if (req_code == REQ_CODE && res_code == RESULT_OK && null != data) {
-            imageUri = data.getData();
+            Uri imageUrix = data.getData();
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                //Bitmap result=Bitmap.createScaledBitmap(bitmap,200,200,false);
-                //           imageUri=getImageUri(getApplicationContext(),result);
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUrix);
+                Bitmap result=Bitmap.createScaledBitmap(bitmap,imgwid,imghight,false);
+                imageUri=getImageUri(getApplicationContext(),result);
                 ImageView imageView = findViewById(imagenow);
                 imageView.setImageBitmap(bitmap);
                 String loc;
@@ -147,10 +156,16 @@ public class Activity_signUP extends AppCompatActivity {
                 uploadImageInFirebaseStorage(loc);
             } catch (IOException e) {
                 e.printStackTrace();
+                toaster(e.getMessage());
             }
         }
     }
-
+    private Uri getImageUri(Context context, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
+       return Uri.parse(path);
+    }
     private void register_user() {
         user_name = et_name.getText().toString();
         address = et_address.getText().toString();

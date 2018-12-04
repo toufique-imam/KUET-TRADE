@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sabertooth.kuettrade">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +29,8 @@
         <activity android:name=".Activity_signUP" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".Your_Products" />
-        <activity android:name=".ADD_PRODUCT"></activity>
+        <activity android:name=".ItemDetails_activity"/>
+        <activity android:name=".ADD_PRODUCT"/>
     </application>
 
 </manifest>

@@ -1,8 +1,13 @@
 package com.sabertooth.kuettrade;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
@@ -19,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignIn_Activity extends AppCompatActivity {
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     EditText mail, password;
     Button showpass, signin;
     ProgressBar pgg;
@@ -35,9 +41,27 @@ public class SignIn_Activity extends AppCompatActivity {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                } else {
+                    Toast.makeText(SignIn_Activity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in_);
+        ActivityCompat.requestPermissions(SignIn_Activity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                MY_PERMISSIONS_REQUEST_READ_CONTACTS);
         auth = FirebaseAuth.getInstance();
         TextView tvSignUp = findViewById(R.id.text_view_signUP);
         pgg = findViewById(R.id.progress_bar_signin);
