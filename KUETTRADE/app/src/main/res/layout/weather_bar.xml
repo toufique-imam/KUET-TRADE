@@ -7,6 +7,7 @@
     android:padding="5dp">
     <android.support.design.card.MaterialCardView
         android:layout_width="match_parent"
+        android:id="@+id/weather_update"
         android:layout_height="80dp">
 
         <LinearLayout
@@ -17,14 +18,14 @@
 
             <android.support.design.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 app:cardBackgroundColor="@color/LightBlue"
                 android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/text_view_loaction"
-                    android:text="location"
+                    android:text="condition"
                     style="@style/text_view_weather"/>
             </android.support.design.card.MaterialCardView>
 
@@ -50,18 +51,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:cardBackgroundColor="@color/LightBlue"
                 android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/text_view_temp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/LightBlue"
-                    android:fontFamily="@font/google_sans_bold"
-                    android:padding="10dp"
-                    android:text="loc Temp"
-                    android:textAlignment="center"
-                    android:textSize="15sp" />
+                    style="@style/text_view_weather"
+                    android:text="loc Temp" />
             </android.support.design.card.MaterialCardView>
         </LinearLayout>
     </android.support.design.card.MaterialCardView>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.card.MaterialCardView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -56,6 +57,8 @@ public class store_and_user_nav_settings extends AppCompatActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     View headerView;
+    //get_weather gc;
+    MaterialCardView mcv;
     RecyclerView tsh, tsf, psh, psf, hod;
     Adapter_1 adp1, adp2, adp3, adp4, adp5;
     LinearLayoutManager llm1, llm2, llm3, llm4, llm5;
@@ -93,6 +96,13 @@ public class store_and_user_nav_settings extends AppCompatActivity
         RetriveUserInfo();
         fetch_data();
         log_print();
+        mcv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                get_weather gc=new get_weather();
+                gc.execute();
+            }
+        });
     }
 
     private void initialize() {
@@ -106,6 +116,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
         ar_tsf = new ArrayList<>();
         ar_tsh = new ArrayList<>();
         my_items = new ArrayList<>();
+        mcv=findViewById(R.id.weather_update);
         hod = findViewById(R.id.recycler_view_hoodie);
         psf = findViewById(R.id.recycler_view_polo_shirt_full);
         psh = findViewById(R.id.recycler_view_polo_shirt_half);
@@ -147,10 +158,9 @@ public class store_and_user_nav_settings extends AppCompatActivity
                 ar_hod.clear();
                 for (DataSnapshot x : dataSnapshot.getChildren()) {
                     Product_class pc = x.getValue(Product_class.class);
-                    ar_hod.add(pc);
-                    if (pc.uid == user_x.uid) {
+                    if (pc.uid == user_x.uid)
                         my_items.add(pc);
-                    }
+                    else ar_hod.add(pc);
                 }
                 adp1 = new Adapter_1(getApplicationContext(), ar_hod);
                 llm1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -170,10 +180,9 @@ public class store_and_user_nav_settings extends AppCompatActivity
                 ar_psf.clear();
                 for (DataSnapshot x : dataSnapshot.getChildren()) {
                     Product_class pc = x.getValue(Product_class.class);
-                    ar_psf.add(pc);
-                    if (pc != null && pc.uid.equals(user_x.uid)) {
+                    if (pc != null && pc.uid.equals(user_x.uid))
                         my_items.add(pc);
-                    }
+                    else ar_psf.add(pc);
                 }
                 adp2 = new Adapter_1(getApplicationContext(), ar_psf);
                 llm2 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -193,10 +202,9 @@ public class store_and_user_nav_settings extends AppCompatActivity
                 ar_psh.clear();
                 for (DataSnapshot x : dataSnapshot.getChildren()) {
                     Product_class pc = x.getValue(Product_class.class);
-                    ar_psh.add(pc);
-                    if (pc != null && pc.uid.equals(user_x.uid)) {
+                    if (pc != null && pc.uid.equals(user_x.uid))
                         my_items.add(pc);
-                    }
+                    else ar_psh.add(pc);
                 }
                 adp3 = new Adapter_1(getApplicationContext(), ar_psh);
                 llm3 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -216,10 +224,9 @@ public class store_and_user_nav_settings extends AppCompatActivity
                 ar_tsf.clear();
                 for (DataSnapshot x : dataSnapshot.getChildren()) {
                     Product_class pc = x.getValue(Product_class.class);
-                    ar_tsf.add(pc);
-                    if (pc != null && pc.uid.equals(user_x.uid)) {
+                    if (pc != null && pc.uid.equals(user_x.uid))
                         my_items.add(pc);
-                    }
+                    else  ar_tsf.add(pc);
                 }
                 adp4 = new Adapter_1(getApplicationContext(), ar_tsf);
                 llm4 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -239,10 +246,9 @@ public class store_and_user_nav_settings extends AppCompatActivity
                 ar_tsh.clear();
                 for (DataSnapshot x : dataSnapshot.getChildren()) {
                     Product_class pc = x.getValue(Product_class.class);
-                    ar_tsh.add(pc);
-                    if (pc != null && Objects.equals(pc.uid, user_x.uid)) {
+                    if (pc != null && Objects.equals(pc.uid, user_x.uid))
                         my_items.add(pc);
-                    }
+                    else ar_tsh.add(pc);
                 }
                 adp5 = new Adapter_1(getApplicationContext(), ar_tsh);
                 llm5 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
