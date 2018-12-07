@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,10 @@ public class Adapter_1  extends  RecyclerView.Adapter<viewHolder>{
                 show.putExtra("idx",i);
                 show.putExtra("MY PRODUCT",false);
                 show.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                if(ctx instanceof WishList_activity)
+                    show.putExtra("WISH",true);
+                else
+                    show.putExtra("WISH",false);
                 ctx.startActivity(show);
             }
         });

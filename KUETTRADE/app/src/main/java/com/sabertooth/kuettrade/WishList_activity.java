@@ -25,6 +25,13 @@ public class WishList_activity extends AppCompatActivity {
     Adapter_1 adpx;
     ArrayList<Product_class>tmp_data;
     FirebaseAuth auth;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        get_data();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

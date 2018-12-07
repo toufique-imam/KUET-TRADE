@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:background="@color/Gray"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/delete_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/dark"
+        android:fontFamily="@font/google_sans_bold"
+        android:padding="5dp"
+        android:textColor="@color/Red"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_yes_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Yes"
+        android:fontFamily="@font/google_sans_bold"
+        android:textColor="@color/red"
+        android:background="@color/dark"
+        app:layout_constraintEnd_toStartOf="@+id/button_no_dont"
+        app:layout_constraintTop_toBottomOf="@+id/delete_text" />
+
+    <Button
+        android:id="@+id/button_no_dont"
+        android:layout_width="wrap_content"
+        android:text="No"
+        android:textColor="@color/DarkSeaGreen"
+        android:background="@color/dark"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delete_text" />
+</android.support.constraint.ConstraintLayout>
