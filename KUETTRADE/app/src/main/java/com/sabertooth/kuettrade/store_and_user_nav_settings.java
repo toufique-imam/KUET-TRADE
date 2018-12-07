@@ -71,6 +71,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
+        RetriveUserInfo();
         fetch_data();
         log_print();
     }
@@ -354,7 +355,8 @@ public class store_and_user_nav_settings extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_wish) {
-
+            Intent intent=new Intent(getApplicationContext(),WishList_activity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_add_product) {
             Intent intent = new Intent(getApplicationContext(), ADD_PRODUCT.class);
             startActivity(intent);
@@ -411,7 +413,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             weather_loc.setText(condition);
-            weather_temp.setText(temp_c+"℃");
+            weather_temp.setText(temp_c+"°C");
             Log.e("URLHERE",url);
             String finalurl="http:"+url;
             Picasso.get().load(finalurl).into(weather_pic);

@@ -40,7 +40,8 @@ public class ADD_PRODUCT extends AppCompatActivity {
     Bitmap bitmap;
     String image_url, front_url, back_url;
     CheckBox cb;
-    ArrayList<String> cat, size;
+    ArrayList<String> cat;
+    ArrayList<Boolean> size;
     EditText product_name, description, price, amount;
     Button add_product;
     ProgressDialog pDialog;
@@ -111,6 +112,13 @@ public class ADD_PRODUCT extends AppCompatActivity {
         amoun = new Integer(0);
         cat = new ArrayList<>();
         size = new ArrayList<>();
+        size.add(false);
+        size.add(false);
+        size.add(false);
+        size.add(false);
+        size.add(false);
+        size.add(false);
+        size.add(false);
         cb = findViewById(R.id.checkbox_t_shirt_half);
         if (cb.isChecked()) cat.add("T Shirt Half Sleeve");
         //cb.setChecked(false);
@@ -126,26 +134,48 @@ public class ADD_PRODUCT extends AppCompatActivity {
         cb = findViewById(R.id.checkbox_hoodie);
         if (cb.isChecked()) cat.add("Hoodie");
         //cb.setChecked(false);
+        boolean xd = false;
         cb = findViewById(R.id.checkbox_S);
-        if (cb.isChecked()) size.add("S");
+        if (cb.isChecked()) {
+            xd = true;
+            size.set(0, true);
+        }
         //cb.setChecked(false);
-        cb = findViewById(R.id.checkbox_S);
-        if (cb.isChecked()) size.add("M");
+        cb = findViewById(R.id.checkbox_M);
+        if (cb.isChecked()) {
+            xd = true;
+            size.set(1, true);
+        }
         //cb.setChecked(false);
-        cb = findViewById(R.id.checkbox_S);
-        if (cb.isChecked()) size.add("L");
+        cb = findViewById(R.id.checkbox_L);
+        if (cb.isChecked()) {
+            xd = true;
+            size.set(2, true);
+        }
         //cb.setChecked(false);
-        cb = findViewById(R.id.checkbox_S);
-        if (cb.isChecked()) size.add("XL");
+        cb = findViewById(R.id.checkbox_XL);
+        if (cb.isChecked()) {
+            xd = true;
+            size.set(3, true);
+        }
         //cb.setChecked(false);
-        cb = findViewById(R.id.checkbox_S);
-        if (cb.isChecked()) size.add("XXL");
+        cb = findViewById(R.id.checkbox_XXL);
+        if (cb.isChecked()) {
+            xd = true;
+            size.set(4, true);
+        }
         //cb.setChecked(false);
-        cb = findViewById(R.id.checkbox_S);
-        if (cb.isChecked()) size.add("3XL");
+        cb = findViewById(R.id.checkbox_3XL);
+        if (cb.isChecked()) {
+            xd = true;
+            size.set(5, true);
+        }
         //cb.setChecked(false);
-        cb = findViewById(R.id.checkbox_S);
-        if (cb.isChecked()) size.add("4XL");
+        cb = findViewById(R.id.checkbox_4XL);
+        if (cb.isChecked()) {
+            xd = true;
+            size.set(6, true);
+        }
         //cb.setChecked(false);
         nam = product_name.getText().toString();
         dess = description.getText().toString();
@@ -162,7 +192,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
             toaster(e.getMessage());
         }
         try {
-            if (amoun > 0 && pric > 0 && !nam.isEmpty() && !size.isEmpty() && !cat.isEmpty() && !front_url.isEmpty()) {
+            if (amoun > 0 && pric > 0 && !nam.isEmpty() && xd && !cat.isEmpty() && !front_url.isEmpty()) {
                 pc.amount = amoun;
                 pc.address = user_c.Address;
                 pc.description = dess;
@@ -176,7 +206,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
                 pc.uid = user_c.uid;
                 upload_product();
             } else {
-                toaster("Invalid Input");
+                toaster(amoun + " " + pric + " " + nam + " " + xd + " " + cat.size() + " " + front_url);
             }
         } catch (Exception e) {
             toaster(e.getMessage());
@@ -227,7 +257,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
             Uri imageUrix = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUrix);
-                Bitmap result = Bitmap.createScaledBitmap(bitmap, 140, 120, false);
+                Bitmap result = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
                 imageUri = getImageUri(getApplicationContext(), result);
                 ImageView imageView = findViewById(imagenow);
                 imageView.setImageBitmap(bitmap);

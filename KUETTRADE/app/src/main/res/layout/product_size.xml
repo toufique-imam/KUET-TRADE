@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+
     android:background="@color/DarkSeaGreen"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -8,6 +9,7 @@
     android:weightSum="8">
 
         <CheckBox
+            android:fontFamily="@font/google_sans_bold"
             android:buttonTint="@color/DarkBlue"
             android:id="@+id/checkbox_S"
             android:layout_width="wrap_content"
@@ -16,6 +18,7 @@
             android:text="@string/s" />
 
         <CheckBox
+            android:fontFamily="@font/google_sans_bold"
             android:buttonTint="@color/DarkBlue"
             android:id="@+id/checkbox_M"
             android:layout_width="wrap_content"
@@ -24,6 +27,7 @@
             android:text="@string/m" />
 
         <CheckBox
+            android:fontFamily="@font/google_sans_bold"
             android:buttonTint="@color/DarkBlue"
             android:id="@+id/checkbox_L"
             android:layout_width="wrap_content"
@@ -32,6 +36,7 @@
             android:text="@string/l" />
 
         <CheckBox
+            android:fontFamily="@font/google_sans_bold"
             android:buttonTint="@color/DarkBlue"
             android:id="@+id/checkbox_XL"
             android:layout_width="wrap_content"
@@ -40,6 +45,7 @@
             android:text="@string/xl" />
 
         <CheckBox
+            android:fontFamily="@font/google_sans_bold"
             android:buttonTint="@color/DarkBlue"
             android:id="@+id/checkbox_XXL"
             android:layout_width="wrap_content"
@@ -48,6 +54,7 @@
             android:text="@string/xxl" />
 
         <CheckBox
+            android:fontFamily="@font/google_sans_bold"
             android:buttonTint="@color/DarkBlue"
             android:id="@+id/checkbox_3XL"
             android:layout_width="wrap_content"
@@ -56,6 +63,7 @@
             android:text="@string/_3xl" />
 
         <CheckBox
+            android:fontFamily="@font/google_sans_bold"
             android:buttonTint="@color/DarkBlue"
             android:id="@+id/checkbox_4XL"
             android:layout_width="wrap_content"

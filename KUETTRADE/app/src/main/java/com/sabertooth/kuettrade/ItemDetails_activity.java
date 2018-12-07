@@ -10,10 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -23,8 +27,7 @@ import static com.sabertooth.kuettrade.Adapter_your_prod.use_me;
 
 public class ItemDetails_activity extends AppCompatActivity {
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0
@@ -37,10 +40,13 @@ public class ItemDetails_activity extends AppCompatActivity {
         }
     }
     ImageView image_f,image_b;
+    private FirebaseAuth mAuth;
+    DatabaseReference UserRef,UpdateRef;
     TextView item_name,item_des;
     Product_class pc;
-    int x;
+    CheckBox s,m,l,xl,xxl,xl_3,xl_4;
     Button order_btn,wishlist_btn,edit_btn,del_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +78,13 @@ public class ItemDetails_activity extends AppCompatActivity {
         }catch (Exception e){
             Log.e("DEBUGME",e.getMessage());
         }
+        if(pc.size.get(0))s.setChecked(true);
+        if(pc.size.get(1))m.setChecked(true);
+        if(pc.size.get(2))l.setChecked(true);
+        if(pc.size.get(3))xl.setChecked(true);
+        if(pc.size.get(4))xxl.setChecked(true);
+        if(pc.size.get(5))xl_3.setChecked(true);
+        if(pc.size.get(5) )xl_4.setChecked(true);
         order_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,8 +97,8 @@ public class ItemDetails_activity extends AppCompatActivity {
         wishlist_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ItemDetails_activity.this, "Under Progress", Toast.LENGTH_SHORT).show();
-            }
+                    update_user(pc);
+                }
         });
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +114,15 @@ public class ItemDetails_activity extends AppCompatActivity {
         });
     }
 
+    private void update_user(Product_class pc) {
+        Log.e("DEBUG",UpdateRef.getKey());
+        Log.e("DEBUG",UpdateRef.toString());
+        String ss=UpdateRef.push().getKey();
+        pc.wid=ss;
+        UpdateRef.child(ss).setValue(pc);
+        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+    }
+
     private void initialize() {
         image_f=findViewById(R.id.image_view_details_product_pic_front);
         image_b=findViewById(R.id.image_view_details_product_pic_back);
@@ -110,5 +132,15 @@ public class ItemDetails_activity extends AppCompatActivity {
         wishlist_btn=findViewById(R.id.button_add_wishlist);
         edit_btn=findViewById(R.id.button_edit_button);
         del_btn=findViewById(R.id.button_delete);
+        s=findViewById(R.id.checkbox_S);
+        m=findViewById(R.id.checkbox_M);
+        l=findViewById(R.id.checkbox_L);
+        xl=findViewById(R.id.checkbox_XL);
+        xxl=findViewById(R.id.checkbox_XXL);
+        xl_3=findViewById(R.id.checkbox_3XL);
+        xl_4=findViewById(R.id.checkbox_4XL);
+        mAuth = FirebaseAuth.getInstance();
+        UserRef = FirebaseDatabase.getInstance().getReference("users");
+        UpdateRef=FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).child("wishlist");
     }
 }

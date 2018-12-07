@@ -1,0 +1,59 @@
+package com.sabertooth.kuettrade;
+
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import static com.sabertooth.kuettrade.store_and_user_nav_settings.user_x;
+
+public class WishList_activity extends AppCompatActivity {
+    RecyclerView rv;
+    GridLayoutManager gridLayoutManager;
+    Adapter_1 adpx;
+    ArrayList<Product_class>tmp_data;
+    FirebaseAuth auth;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_wish_list_activity);
+        auth=FirebaseAuth.getInstance();
+        rv=findViewById(R.id.recycler_view_wishList);
+        tmp_data=new ArrayList<>();
+        get_data();
+    }
+    void get_data(){
+        tmp_data.clear();
+        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("users").child(auth.getCurrentUser().getUid()).child("wishlist");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot xd:dataSnapshot.getChildren()){
+                    Product_class pc=xd.getValue(Product_class.class);
+                    tmp_data.add(pc);
+                }
+                adpx=new Adapter_1(WishList_activity.this,tmp_data);
+                gridLayoutManager=new GridLayoutManager(WishList_activity.this,2);
+                rv.setAdapter(adpx);
+                rv.setLayoutManager(gridLayoutManager);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(WishList_activity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}

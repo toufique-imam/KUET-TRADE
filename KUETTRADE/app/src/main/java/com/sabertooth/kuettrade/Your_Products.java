@@ -20,7 +20,6 @@ public class Your_Products extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your__products);
         tmp=my_items;
-        Log.e("FUCK",tmp.size()+"");
         recyclerView=findViewById(R.id.recycler_view_your_products);
         linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         adapter_your_prod=new Adapter_your_prod(this,tmp);

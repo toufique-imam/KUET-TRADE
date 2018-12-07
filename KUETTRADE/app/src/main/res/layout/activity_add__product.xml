@@ -50,6 +50,7 @@
                 android:text="@string/t_shirt_half_sleeve" />
 
             <CheckBox
+                android:fontFamily="@font/google_sans_bold"
                 android:buttonTint="@color/Black"
                 android:id="@+id/checkbox_t_shirt_full"
                 android:layout_width="wrap_content"
@@ -65,6 +66,7 @@
             android:weightSum="2">
 
             <CheckBox
+                android:fontFamily="@font/google_sans_bold"
                 android:id="@+id/checkbox_polo_half"
                 android:layout_width="wrap_content"
                 android:buttonTint="@color/Black"
@@ -73,6 +75,7 @@
                 android:text="@string/polo_shirt_half_sleeve" />
 
             <CheckBox
+                android:fontFamily="@font/google_sans_bold"
                 android:id="@+id/checkbox_polo_full"
                 android:buttonTint="@color/Black"
                 android:layout_width="wrap_content"
@@ -86,6 +89,7 @@
             android:layout_height="wrap_content"
             android:background="@color/LightGoldenrodYellow">
             <CheckBox
+                android:fontFamily="@font/google_sans_bold"
                 android:buttonTint="@color/Black"
                 android:id="@+id/checkbox_hoodie"
                 android:layout_width="wrap_content"
@@ -95,6 +99,7 @@
         </LinearLayout>
 
         <EditText
+            android:fontFamily="@font/google_sans_bold"
             android:id="@+id/edit_text_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,6 +113,7 @@
             tools:targetApi="o" />
 
         <EditText
+            android:fontFamily="@font/google_sans_bold"
             android:id="@+id/edit_text_product_descriptio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -121,6 +127,7 @@
             tools:targetApi="o" />
 
         <EditText
+            android:fontFamily="@font/google_sans_bold"
             android:id="@+id/edit_text_product_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,6 +149,7 @@
             android:layout_height="wrap_content" />
 
         <EditText
+            android:fontFamily="@font/google_sans_bold"
             android:id="@+id/edit_text_product_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -155,6 +163,7 @@
             tools:targetApi="o" />
 
         <Button
+            android:fontFamily="@font/google_sans_bold"
             android:textColor="@color/Wheat"
             android:background="@color/Black"
             android:id="@+id/button_add_product"

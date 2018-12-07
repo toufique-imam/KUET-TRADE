@@ -39,7 +39,6 @@ public class Adapter_your_prod extends RecyclerView.Adapter<viewholder_your_prod
     ArrayList<Product_class> tmp_data;
     public Adapter_your_prod(Context context, ArrayList<Product_class> tmp_data) {
         this.context = context;
-        use_me=new Product_class();
         this.tmp_data = tmp_data;
     }
 
@@ -52,7 +51,6 @@ public class Adapter_your_prod extends RecyclerView.Adapter<viewholder_your_prod
 
     @Override
     public void onBindViewHolder(@NonNull viewholder_your_prod viewholder_your_prod, final int i) {
-        use_me=tmp_data.get(i);
         try {
             Picasso.get().load(tmp_data.get(i).image_front).into(viewholder_your_prod.img_f);
             Picasso.get().load(tmp_data.get(i).image_back).into(viewholder_your_prod.img_b);
@@ -66,6 +64,7 @@ public class Adapter_your_prod extends RecyclerView.Adapter<viewholder_your_prod
         viewholder_your_prod.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                use_me=tmp_data.get(i);
                 Intent intent=new Intent(context,ItemDetails_activity.class);
                 intent.putExtra("MY PRODUCT",true);
                 intent.putExtra("idx",i);
