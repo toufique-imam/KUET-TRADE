@@ -159,7 +159,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
                 ar_hod.clear();
                 for (DataSnapshot x : dataSnapshot.getChildren()) {
                     Product_class pc = x.getValue(Product_class.class);
-                    if (pc.uid == user_x.uid)
+                    if (pc!=null && pc.uid.equals(user_x.uid))
                         my_items.add(pc);
                     else ar_hod.add(pc);
                 }
