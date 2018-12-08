@@ -24,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
+import java.util.Objects;
+
 public class SignIn_Activity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     EditText mail, password;
@@ -34,7 +36,7 @@ public class SignIn_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (auth.getCurrentUser() != null) {
+        if (auth.getCurrentUser() != null && auth.getCurrentUser().isEmailVerified()) {
             finish();
             Intent intent = new Intent(getApplicationContext(), store_and_user_nav_settings.class);
             startActivity(intent);
@@ -127,11 +129,16 @@ public class SignIn_Activity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 pgg.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    finish();
-                    Toast.makeText(getApplicationContext(), "User Login Successfull", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), store_and_user_nav_settings.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    if(Objects.requireNonNull(auth.getCurrentUser()).isEmailVerified()) {
+                        finish();
+                        Toast.makeText(getApplicationContext(), "User Login Successfull", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), store_and_user_nav_settings.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(SignIn_Activity.this, "Please Verify Your Mail Address", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(getApplicationContext(), "This Mail is Already Registered", Toast.LENGTH_LONG).show();

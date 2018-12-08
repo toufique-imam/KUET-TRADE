@@ -386,7 +386,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
         protected Void doInBackground(Void... voids) {
             HttpHandler sh=new HttpHandler();
             String jsnStr=sh.makeServiceCall(API);
-            if(!jsnStr.isEmpty()){
+            if(jsnStr!=null){
                 try{
                     JSONObject jsonObject=new JSONObject(jsnStr);
                     JSONObject current;
@@ -412,11 +412,17 @@ public class store_and_user_nav_settings extends AppCompatActivity
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            weather_loc.setText(condition);
-            weather_temp.setText(temp_c+"°C");
-            Log.e("URLHERE",url);
-            String finalurl="http:"+url;
-            Picasso.get().load(finalurl).into(weather_pic);
+            try {
+                weather_loc.setText(condition);
+                weather_temp.setText(temp_c + "°C");
+                Log.e("URLHERE", url);
+                String finalurl = "http:" + url;
+                Picasso.get().load(finalurl).into(weather_pic);
+            }catch (Exception e)
+            {
+                Toast.makeText(store_and_user_nav_settings.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("FUCK",e.getMessage());
+            }
         }
     }
 }

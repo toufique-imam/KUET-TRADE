@@ -17,24 +17,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SignIn_Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity android:name=".SignIn_Activity"/>
         <activity
             android:name=".store_and_user_nav_settings"
             android:label="@string/title_activity_store_and_user_nav_settings"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity_signUP" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".Your_Products" />
-        <activity android:name=".ItemDetails_activity" />
-        <activity android:name=".ADD_PRODUCT" />
-        <activity android:name=".WishList_activity"></activity>
+        <activity android:name=".Activity_signUP" android:label="SignUp Now!"/>
+        <activity android:name=".SettingsActivity" android:label="Profile"/>
+        <activity android:name=".Your_Products" android:label="Your Products"/>
+        <activity android:name=".ItemDetails_activity" android:label="Product Details"/>
+        <activity android:name=".ADD_PRODUCT" android:label="Sell a Product"/>
+        <activity android:name=".WishList_activity" android:label="Wishlist"/>
+        <activity android:name=".Welcome_activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

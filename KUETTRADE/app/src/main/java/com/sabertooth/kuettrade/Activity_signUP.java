@@ -122,7 +122,7 @@ public class Activity_signUP extends AppCompatActivity {
         bt_action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pDialog.setMessage("Signing You Up...");
+                pDialog.setMessage("Registering...");
                 pDialog.setCancelable(false);
                 register_user();
             }
@@ -223,9 +223,10 @@ public class Activity_signUP extends AppCompatActivity {
                     update_user();
                     pDialog.dismiss();
                     finish();
-                    Intent intent = new Intent(getApplicationContext(), store_and_user_nav_settings.class);
+                    Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification();
+                    Toast.makeText(Activity_signUP.this, "Verification Mail is sent. Please Verify Your Mail", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), SignIn_Activity.class);
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "User Regestered Successfull", Toast.LENGTH_LONG).show();
                 } else {
                     pDialog.dismiss();
                     if (task.getException() instanceof FirebaseAuthUserCollisionException)
