@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@drawable/gradient_white"
+            android:background="@drawable/background_radial"
             android:orientation="horizontal">
 
             <android.support.design.card.MaterialCardView

@@ -17,7 +17,7 @@
             android:id="@+id/image_view_my_prod_f"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/gradient_red"
+            android:background="@drawable/gradient_white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY" />

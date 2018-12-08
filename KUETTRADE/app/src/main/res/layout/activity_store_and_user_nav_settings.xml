@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:background="@drawable/gradient_black"
+        android:background="@drawable/background_radial"
         app:itemTextColor="@color/gainsboro"
         app:itemIconTint="@color/Black"
         app:headerLayout="@layout/nav_header_store_and_user_nav_settings"
