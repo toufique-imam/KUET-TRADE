@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.button.MaterialButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Patterns;
@@ -40,7 +41,7 @@ public class Activity_signUP extends AppCompatActivity {
     EditText et_pass, et_mail, et_name, et_address, et_phone_1, et_phone_2;
     private static final int REQ_CODE = 1;
     ImageView coverImg, proImg;
-    Button bt_action, bt_show;
+    MaterialButton bt_action, bt_show;
     private FirebaseAuth mAuth;
     Uri imageUri;
     int imagenow,imgwid,imghight;
@@ -146,7 +147,7 @@ public class Activity_signUP extends AppCompatActivity {
             Uri imageUrix = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUrix);
-                Bitmap result=Bitmap.createScaledBitmap(bitmap,imgwid/2,200,false);
+                Bitmap result=Bitmap.createScaledBitmap(bitmap,bitmap.getWidth()/2,bitmap.getHeight()/2,false);
                 imageUri=getImageUri(getApplicationContext(),result);
                 ImageView imageView = findViewById(imagenow);
                 imageView.setImageBitmap(bitmap);
@@ -162,7 +163,7 @@ public class Activity_signUP extends AppCompatActivity {
     }
     private Uri getImageUri(Context context, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
         String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
        return Uri.parse(path);
     }

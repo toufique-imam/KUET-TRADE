@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Black"
+    android:background="@drawable/background_radial"
     android:orientation="vertical"
     tools:context=".SettingsActivity">
 
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
+            <android.support.design.button.MaterialButton
                 android:padding="8dp"
                 android:layout_gravity="center"
                 android:id="@+id/button_setting_show_password"

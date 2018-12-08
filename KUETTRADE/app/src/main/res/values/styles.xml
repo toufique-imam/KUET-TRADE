@@ -1,11 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/google_sans_medium</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
@@ -31,6 +29,7 @@
         <item name="android:layout_margin">5dp</item>
     </style>
     <style name="Text_view_Store_Header">
+        <item name="android:textColor">@color/white</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -46,6 +45,17 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:contentDescription">@string/todo</item>
 
-
+    </style>
+    <style name="text_add_products">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:importantForAutofill" tools:targetApi="o">no</item>
+        <item name="android:textColor">@color/Gainsboro</item>
+        <item name="android:textColorHint">@color/DimGray</item>
     </style>
 </resources>

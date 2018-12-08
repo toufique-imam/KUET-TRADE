@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.button.MaterialButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
@@ -26,7 +27,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 public class SignIn_Activity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     EditText mail, password;
-    Button showpass, signin;
+    MaterialButton showpass, signin;
     ProgressBar pgg;
     static FirebaseAuth auth;
 

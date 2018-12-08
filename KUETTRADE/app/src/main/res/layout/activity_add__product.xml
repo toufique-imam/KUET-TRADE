@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/MediumSeaGreen"
+    android:background="@drawable/background_radial"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -23,8 +23,7 @@
                 android:id="@+id/image_view_product_pic_f"
                 style="@style/Product_Image_Main"
                 app:srcCompat="@color/Azure"
-                tools:srcCompat="@tools:sample/avatars"
-                 />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/image_view_product_pic_b"
@@ -32,113 +31,25 @@
                 app:srcCompat="@color/Azure"
                 tools:srcCompat="@tools:sample/avatars" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:background="@color/Gold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2">
-
-            <CheckBox
-                android:fontFamily="@font/google_sans_bold"
-                android:buttonTint="@color/Black"
-                android:id="@+id/checkbox_t_shirt_half"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/t_shirt_half_sleeve" />
-
-            <CheckBox
-                android:fontFamily="@font/google_sans_bold"
-                android:buttonTint="@color/Black"
-                android:id="@+id/checkbox_t_shirt_full"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/t_shirt_full_sleeve" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:background="@color/BurlyWood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2">
-
-            <CheckBox
-                android:fontFamily="@font/google_sans_bold"
-                android:id="@+id/checkbox_polo_half"
-                android:layout_width="wrap_content"
-                android:buttonTint="@color/Black"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/polo_shirt_half_sleeve" />
-
-            <CheckBox
-                android:fontFamily="@font/google_sans_bold"
-                android:id="@+id/checkbox_polo_full"
-                android:buttonTint="@color/Black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/polo_shirt_full_sleeve" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/LightGoldenrodYellow">
-            <CheckBox
-                android:fontFamily="@font/google_sans_bold"
-                android:buttonTint="@color/Black"
-                android:id="@+id/checkbox_hoodie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hoodie" />
-        </LinearLayout>
+        <include layout="@layout/item_type_layout" />
 
         <EditText
-            android:fontFamily="@font/google_sans_bold"
+            style="@style/text_add_products"
             android:id="@+id/edit_text_product_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
             android:hint="@string/your_product_name"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            tools:targetApi="o" />
+            android:inputType="textPersonName" />
 
         <EditText
-            android:fontFamily="@font/google_sans_bold"
             android:id="@+id/edit_text_product_descriptio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
             android:hint="@string/description"
-            android:importantForAutofill="no"
             android:inputType="text"
-            android:padding="5dp"
-            tools:targetApi="o" />
+            style="@style/text_add_products"/>
 
         <EditText
-            android:fontFamily="@font/google_sans_bold"
             android:id="@+id/edit_text_product_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
             android:hint="@string/price"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:padding="5dp"
-            tools:targetApi="o" />
+            android:inputType="numberSigned"
+            style="@style/text_add_products"/>
 
         <include
             layout="@layout/product_size"
@@ -149,23 +60,15 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:fontFamily="@font/google_sans_bold"
+            style="@style/text_add_products"
             android:id="@+id/edit_text_product_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
             android:hint="@string/how_many_you_want_to_sell"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:padding="5dp"
-            tools:targetApi="o" />
+            android:inputType="numberSigned" />
 
-        <Button
+        <android.support.design.button.MaterialButton
             android:fontFamily="@font/google_sans_bold"
             android:textColor="@color/Wheat"
-            android:background="@color/Black"
+            android:background="@color/DarkRed"
             android:id="@+id/button_add_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -173,7 +76,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="@string/add_this_product" />
     </LinearLayout>
 </ScrollView>

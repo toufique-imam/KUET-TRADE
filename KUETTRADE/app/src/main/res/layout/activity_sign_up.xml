@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Black"
+    android:background="@drawable/gradient_black"
     android:orientation="vertical"
     tools:context=".SettingsActivity">
 
@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/SlateGray"
+                android:background="@drawable/background_radial"
                 android:scaleType="fitXY" />
 
             <ImageView
@@ -31,7 +31,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp"
-                android:background="@color/DarkSeaGreen"
+                android:background="@drawable/background_radial"
                 android:scaleType="fitXY" />
         </FrameLayout>
 
@@ -120,25 +120,26 @@
                 android:textAlignment="center"
                 android:textSize="17sp" />
 
-            <Button
+            <android.support.design.button.MaterialButton
                 android:id="@+id/button_sign_up_show_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans_regular"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="3"
-                android:background="@color/SlateGray"
+                android:background="@drawable/gradient_red"
                 android:text="Show"
                 android:textColor="@color/Gold" />
         </LinearLayout>
 
-        <Button
+        <android.support.design.button.MaterialButton
             android:id="@+id/button_sign_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/Crimson"
+            android:background="@drawable/gradient_white"
             android:text="@string/sign_up"
-            android:textColor="@color/Black" />
+            android:textColor="@color/Gold"/>
     </LinearLayout>
 </ScrollView>

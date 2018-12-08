@@ -1,6 +1,7 @@
 package com.sabertooth.kuettrade;
 
 import android.os.Bundle;
+import android.support.design.button.MaterialButton;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,7 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
     ImageView coverPic;
     CircleImageView proPic;
     TextView name,email,address,phone1,phone2;
-    Button pass;
+    MaterialButton pass;
     FloatingActionButton fab;
     private void toaster(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();

@@ -24,7 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.support.design.button.MaterialButton
         android:id="@+id/button_yes_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button_no_dont"
         app:layout_constraintTop_toBottomOf="@+id/delete_text" />
 
-    <Button
+    <android.support.design.button.MaterialButton
         android:id="@+id/button_no_dont"
         android:layout_width="wrap_content"
         android:text="No"

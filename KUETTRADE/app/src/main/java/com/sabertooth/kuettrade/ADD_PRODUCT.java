@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.button.MaterialButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
@@ -43,7 +44,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
     ArrayList<String> cat;
     ArrayList<Boolean> size;
     EditText product_name, description, price, amount;
-    Button add_product;
+    MaterialButton add_product;
     ProgressDialog pDialog;
     boolean f1, f2;
     boolean image_indicator;
@@ -215,7 +216,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
 
     private Uri getImageUri(Context context, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
         String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
@@ -257,7 +258,7 @@ public class ADD_PRODUCT extends AppCompatActivity {
             Uri imageUrix = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUrix);
-                Bitmap result = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
+                Bitmap result = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth()/2, bitmap.getHeight()/2, false);
                 imageUri = getImageUri(getApplicationContext(), result);
                 ImageView imageView = findViewById(imagenow);
                 imageView.setImageBitmap(bitmap);

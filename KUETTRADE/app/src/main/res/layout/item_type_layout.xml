@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/background_radial"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <CheckBox
+            android:fontFamily="@font/google_sans_bold"
+            android:buttonTint="@color/Black"
+            android:id="@+id/checkbox_t_shirt_half"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/t_shirt_half_sleeve" />
+
+        <CheckBox
+            android:fontFamily="@font/google_sans_bold"
+            android:buttonTint="@color/Black"
+            android:id="@+id/checkbox_t_shirt_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/t_shirt_full_sleeve" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <CheckBox
+            android:fontFamily="@font/google_sans_bold"
+            android:id="@+id/checkbox_polo_half"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/Black"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/polo_shirt_half_sleeve" />
+
+        <CheckBox
+            android:fontFamily="@font/google_sans_bold"
+            android:id="@+id/checkbox_polo_full"
+            android:buttonTint="@color/Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/polo_shirt_full_sleeve" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <CheckBox
+            android:fontFamily="@font/google_sans_bold"
+            android:buttonTint="@color/Black"
+            android:id="@+id/checkbox_hoodie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hoodie" />
+    </LinearLayout>
+</LinearLayout>

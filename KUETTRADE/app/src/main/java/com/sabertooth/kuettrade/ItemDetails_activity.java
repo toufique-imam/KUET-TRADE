@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.button.MaterialButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -50,7 +51,7 @@ public class ItemDetails_activity extends AppCompatActivity {
     TextView item_name,item_des;
     Product_class pc;
     CheckBox s,m,l,xl,xxl,xl_3,xl_4;
-    Button order_btn,wishlist_btn,edit_btn,del_btn,del_wish;
+    MaterialButton order_btn,wishlist_btn,edit_btn,del_btn,del_wish;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,8 +105,8 @@ public class ItemDetails_activity extends AppCompatActivity {
         dialogueBuilder.setView(dialogVIew);
         TextView tvtmp=dialogVIew.findViewById(R.id.delete_text);
         tvtmp.setText(s);
-        final Button buttondont = dialogVIew.findViewById(R.id.button_no_dont);
-        final Button buttonDelete=dialogVIew.findViewById(R.id.button_yes_delete);
+        final MaterialButton buttondont = dialogVIew.findViewById(R.id.button_no_dont);
+        final MaterialButton buttonDelete=dialogVIew.findViewById(R.id.button_yes_delete);
        // dialogueBuilder.setTitle("Delete Product");
         final AlertDialog alertDialog=dialogueBuilder.create();
         alertDialog.show();

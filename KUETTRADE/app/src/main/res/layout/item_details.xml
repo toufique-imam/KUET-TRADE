@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient_black"
     android:orientation="vertical"
     android:padding="5dp">
     <LinearLayout
@@ -27,15 +28,16 @@
         android:orientation="vertical">
         <TextView
             android:id="@+id/text_view_details_item_name"
-            android:background="@color/AliceBlue"
+            android:background="@color/Gray"
             android:padding="5dp"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Item Name"
+            android:textColor="@color/White"
             android:textSize="30sp"/>
         <ScrollView
-            android:background="@color/LightGoldenrodYellow"
+            android:background="@drawable/gradient_white"
             android:layout_width="match_parent"
             android:layout_height="100dp">
             <TextView
@@ -55,19 +57,19 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <android.support.design.button.MaterialButton
                 android:id="@+id/button_order_button"
                 android:textColor="@color/AliceBlue"
-                android:background="@color/DarkGoldenrod"
+                android:background="@drawable/gradient_red"
                 android:textAlignment="center"
                 android:text="Order Now"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <Button
+            <android.support.design.button.MaterialButton
                 android:id="@+id/button_add_wishlist"
-                android:background="@color/Black"
+                android:background="@drawable/gradient_red"
                 android:textColor="@color/BlanchedAlmond"
                 android:textAlignment="center"
                 android:text="Add to WishList"
@@ -75,21 +77,20 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <Button
+            <android.support.design.button.MaterialButton
                 android:visibility="gone"
                 android:id="@+id/button_edit_button"
                 android:textColor="@color/AliceBlue"
-                android:background="@color/DarkGoldenrod"
+                android:background="@drawable/gradient_black"
                 android:textAlignment="center"
                 android:text="Edit"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <Button
-                android:visibility="gone"
+            <android.support.design.button.MaterialButton
                 android:id="@+id/button_delete"
-                android:background="@color/Black"
+                android:background="@drawable/gradient_blue"
                 android:textColor="@color/BlanchedAlmond"
                 android:textAlignment="center"
                 android:text="Delete"
@@ -97,9 +98,9 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <Button
+            <android.support.design.button.MaterialButton
                 android:id="@+id/button_wishdel"
-                android:background="@color/Black"
+                android:background="@drawable/gradient_blue"
                 android:textColor="@color/BlanchedAlmond"
                 android:textAlignment="center"
                 android:text="Delete from wishlist"

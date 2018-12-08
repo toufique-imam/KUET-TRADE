@@ -9,7 +9,7 @@
     <string name="show">Show</string>
     <string name="show_details">Logout</string>
     <string name="update">Update</string>
-    <string name="title_activity_store_and_user_nav_settings">store_and_user_nav_settings</string>
+    <string name="title_activity_store_and_user_nav_settings">Available Products For You</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
