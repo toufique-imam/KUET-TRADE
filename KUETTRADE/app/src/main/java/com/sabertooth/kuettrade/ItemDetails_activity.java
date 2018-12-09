@@ -48,7 +48,7 @@ public class ItemDetails_activity extends AppCompatActivity {
     ImageView image_f,image_b;
     private FirebaseAuth mAuth;
     DatabaseReference UserRef,UpdateRef,deleteRef,delwishRef;
-    TextView item_name,item_des;
+    TextView item_name,item_des,item_price;
     Product_class pc;
     CheckBox s,m,l,xl,xxl,xl_3,xl_4;
     MaterialButton order_btn,wishlist_btn,edit_btn,del_btn,del_wish;
@@ -141,6 +141,7 @@ public class ItemDetails_activity extends AppCompatActivity {
         image_b=findViewById(R.id.image_view_details_product_pic_back);
         item_name=findViewById(R.id.text_view_details_item_name);
         item_des=findViewById(R.id.text_view_details_item_des);
+        item_price=findViewById(R.id.text_view_details_item_price);
         order_btn=findViewById(R.id.button_order_button);
         wishlist_btn=findViewById(R.id.button_add_wishlist);
         edit_btn=findViewById(R.id.button_edit_button);
@@ -183,6 +184,7 @@ public class ItemDetails_activity extends AppCompatActivity {
             Picasso.get().load(pc.image_back).into(image_b);
             item_name.setText(pc.name);
             item_des.setText(pc.description);
+            item_price.setText(pc.price+" tk");
         }catch (Exception e){
             Log.e("DEBUGME",e.getMessage());
         }

@@ -47,7 +47,7 @@ public class Adapter_1  extends  RecyclerView.Adapter<viewHolder>{
     public void onBindViewHolder(@NonNull viewHolder viewHolder, final int i) {
         Picasso.get().load(tmp_data.get(i).image_front).into(viewHolder.img);
         viewHolder.name_.setText(tmp_data.get(i).name);
-        viewHolder.price_.setText(tmp_data.get(i).price+"");
+        viewHolder.price_.setText(tmp_data.get(i).price+" tk");
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

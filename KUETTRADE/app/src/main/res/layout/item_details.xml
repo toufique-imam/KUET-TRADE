@@ -1,113 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/background_radial"
     android:orientation="vertical"
     android:padding="5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp">
+
         <ImageView
             android:id="@+id/image_view_details_product_pic_front"
             style="@style/Product_Image_Main"
             app:srcCompat="@color/Azure"
-            tools:srcCompat="@tools:sample/avatars"/>
+            tools:srcCompat="@tools:sample/avatars" />
+
         <ImageView
             android:id="@+id/image_view_details_product_pic_back"
             style="@style/Product_Image_Main"
             app:srcCompat="@color/Azure"
-            tools:srcCompat="@tools:sample/avatars"
-            />
+            tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/text_view_details_item_name"
-            android:background="@color/Gray"
-            android:padding="5dp"
-            android:textAlignment="center"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Item Name"
-            android:textColor="@color/White"
-            android:textSize="30sp"/>
-        <ScrollView
-            android:background="@drawable/gradient_white"
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="wrap_content">
+
             <TextView
-                android:id="@+id/text_view_details_item_des"
-                android:padding="5dp"
-                android:textAlignment="center"
+                android:id="@+id/text_view_details_item_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/Gray"
+                android:padding="5dp"
+                android:text="Item Name"
+                android:textAlignment="center"
+                android:textColor="@color/White"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/text_view_details_item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/Gray"
+                android:padding="5dp"
+                android:text="Item Price"
+                android:textAlignment="center"
+                android:textColor="@color/White"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient_white">
+
+            <TextView
+                android:id="@+id/text_view_details_item_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
                 android:text="Item Description will be here about the color and the quality of products and its int Scroll view"
-                android:textSize="20sp"/>
+                android:textAlignment="center"
+                android:textSize="20sp" />
         </ScrollView>
+
         <include
             layout="@layout/product_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
             <android.support.design.button.MaterialButton
                 android:id="@+id/button_order_button"
-                android:textColor="@color/AliceBlue"
-                android:background="@drawable/gradient_red"
-                android:textAlignment="center"
-                android:text="Order Now"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:background="@drawable/gradient_red"
+                android:text="Order Now"
+                android:textAlignment="center"
+                android:textColor="@color/AliceBlue" />
+
             <android.support.design.button.MaterialButton
                 android:id="@+id/button_add_wishlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/gradient_red"
-                android:textColor="@color/BlanchedAlmond"
-                android:textAlignment="center"
                 android:text="Add to WishList"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <android.support.design.button.MaterialButton
-                android:visibility="gone"
-                android:id="@+id/button_edit_button"
-                android:textColor="@color/AliceBlue"
-                android:background="@drawable/gradient_black"
                 android:textAlignment="center"
-                android:text="Edit"
+                android:textColor="@color/BlanchedAlmond" />
+
+            <android.support.design.button.MaterialButton
+                android:id="@+id/button_edit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:background="@drawable/gradient_black"
+                android:text="Edit"
+                android:textAlignment="center"
+                android:textColor="@color/AliceBlue"
+                android:visibility="gone" />
+
             <android.support.design.button.MaterialButton
                 android:id="@+id/button_delete"
-                android:background="@drawable/gradient_blue"
-                android:textColor="@color/BlanchedAlmond"
-                android:textAlignment="center"
-                android:text="Delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:background="@drawable/gradient_blue"
+                android:text="Delete"
+                android:textAlignment="center"
+                android:textColor="@color/BlanchedAlmond" />
+
             <android.support.design.button.MaterialButton
                 android:id="@+id/button_wishdel"
-                android:background="@drawable/gradient_blue"
-                android:textColor="@color/BlanchedAlmond"
-                android:textAlignment="center"
-                android:text="Delete from wishlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:background="@drawable/gradient_blue"
+                android:text="Delete from wishlist"
+                android:textAlignment="center"
+                android:textColor="@color/BlanchedAlmond" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

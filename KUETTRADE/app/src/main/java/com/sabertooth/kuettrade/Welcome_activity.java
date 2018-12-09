@@ -22,7 +22,7 @@ public class Welcome_activity extends AppCompatActivity {
     private  class  LogoLauncher extends  Thread{
         public void run(){
             try {
-                sleep(1000);
+                sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

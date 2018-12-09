@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.button.MaterialButton;
 import android.support.design.card.MaterialCardView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -12,11 +13,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,6 +62,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
     View headerView;
     //get_weather gc;
     MaterialCardView mcv;
+    ProgressDialog pg;
     RecyclerView tsh, tsf, psh, psf, hod;
     Adapter_1 adp1, adp2, adp3, adp4, adp5;
     LinearLayoutManager llm1, llm2, llm3, llm4, llm5;
@@ -85,8 +89,8 @@ public class store_and_user_nav_settings extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent=new Intent(store_and_user_nav_settings.this,WishList_activity.class);
+                startActivity(intent);
             }
         });
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -126,6 +130,9 @@ public class store_and_user_nav_settings extends AppCompatActivity
         productsref = FirebaseDatabase.getInstance().getReference("products");
         mAuth = FirebaseAuth.getInstance();
         UserRef = FirebaseDatabase.getInstance().getReference("users");
+        pg=new ProgressDialog(store_and_user_nav_settings.this);
+        pg.setMessage("Downloading Data.........");
+        pg.show();
         RetriveUserInfo();
         fetch_data();
         toolbar = findViewById(R.id.toolbar);
@@ -140,6 +147,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
         nav_user_mail = headerView.findViewById(R.id.text_view_nav_user_mail);
         get_weather gc=new get_weather();
         gc.execute();
+        pg.dismiss();
     }
 
     void log_print() {
@@ -367,12 +375,40 @@ public class store_and_user_nav_settings extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_user_logout) {
-            mAuth.signOut();
-            Intent intent = new Intent(getApplicationContext(), SignIn_Activity.class);
-            finish();
-            startActivity(intent);
+            AlertDialog.Builder dialogueBuilder = new AlertDialog.Builder(this);
+            LayoutInflater inflater = getLayoutInflater();
+            final View dialogVIew = inflater.inflate(R.layout.delete_alert, null);
+            dialogueBuilder.setView(dialogVIew);
+            TextView tvtmp=dialogVIew.findViewById(R.id.delete_text);
+            tvtmp.setText("You Sure want to logOut?");
+            final MaterialButton buttondont = dialogVIew.findViewById(R.id.button_no_dont);
+            final MaterialButton buttonDelete=dialogVIew.findViewById(R.id.button_yes_delete);
+            // dialogueBuilder.setTitle("Delete Product");
+            final AlertDialog alertDialog=dialogueBuilder.create();
+            alertDialog.show();
+            buttondont.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                }
+            });
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mAuth.signOut();
+                    Intent intent = new Intent(getApplicationContext(), SignIn_Activity.class);
+                    finish();
+                    startActivity(intent);
+                }
+            });
+
         } else if (id == R.id.nav_send) {
-            //send Mail
+            Intent Email = new Intent(Intent.ACTION_SEND);
+            Email.setType("text/email");
+            Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "nuhash1083s@gmail.com" });
+            Email.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+            Email.putExtra(Intent.EXTRA_TEXT, "Hello Developer Kuet Trade's...," + "");
+            startActivity(Intent.createChooser(Email, "Send Feedback:"));
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
