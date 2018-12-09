@@ -222,7 +222,6 @@ public class Activity_signUP extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     update_user();
                     pDialog.dismiss();
-                    finish();
                     Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification();
                     Toast.makeText(Activity_signUP.this, "Verification Mail is sent. Please Verify Your Mail", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), SignIn_Activity.class);
@@ -285,6 +284,7 @@ public class Activity_signUP extends AppCompatActivity {
             toaster("USER is empty");
         }
         Log.d("CAME","uploaded_data_user");
+        finish();
     }
     private void uploadImageInFirebaseStorage(String loc) {
         pDialog.setMessage("Uploading User Image");
