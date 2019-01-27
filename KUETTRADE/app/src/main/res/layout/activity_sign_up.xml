@@ -120,7 +120,7 @@
                 android:textAlignment="center"
                 android:textSize="17sp" />
 
-            <android.support.design.button.MaterialButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_sign_up_show_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
                 android:textColor="@color/Gold" />
         </LinearLayout>
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_sign_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

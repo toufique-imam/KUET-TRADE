@@ -1,144 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_radial"
-    android:orientation="vertical"
-    android:padding="5dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
-
-        <ImageView
-            android:id="@+id/image_view_details_product_pic_front"
-            style="@style/Product_Image_Main"
-            app:srcCompat="@color/Azure"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <ImageView
-            android:id="@+id/image_view_details_product_pic_back"
-            style="@style/Product_Image_Main"
-            app:srcCompat="@color/Azure"
-            tools:srcCompat="@tools:sample/avatars" />
-    </LinearLayout>
+    android:background="@drawable/background_radial">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="200dp">
 
-            <TextView
-                android:id="@+id/text_view_details_item_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/Gray"
-                android:padding="5dp"
-                android:text="Item Name"
-                android:textAlignment="center"
-                android:textColor="@color/White"
-                android:textSize="30sp" />
+            <ImageView
+                android:id="@+id/image_view_details_product_pic_front"
+                style="@style/Product_Image_Main"
+                app:srcCompat="@color/Azure"
+                tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/text_view_details_item_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/Gray"
-                android:padding="5dp"
-                android:text="Item Price"
-                android:textAlignment="center"
-                android:textColor="@color/White"
-                android:textSize="30sp" />
+            <ImageView
+                android:id="@+id/image_view_details_product_pic_back"
+                style="@style/Product_Image_Main"
+                app:srcCompat="@color/Azure"
+                tools:srcCompat="@tools:sample/avatars" />
         </LinearLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/gradient_white">
-
-            <TextView
-                android:id="@+id/text_view_details_item_des"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Item Description will be here about the color and the quality of products and its int Scroll view"
-                android:textAlignment="center"
-                android:textSize="20sp" />
-        </ScrollView>
-
-        <include
-            layout="@layout/product_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:orientation="vertical">
 
-            <android.support.design.button.MaterialButton
-                android:id="@+id/button_order_button"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_view_details_item_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/Gray"
+                    android:padding="5dp"
+                    android:text="Item Name"
+                    android:textAlignment="center"
+                    android:textColor="@color/White"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/text_view_details_item_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/Gray"
+                    android:padding="5dp"
+                    android:text="Item Price"
+                    android:textAlignment="center"
+                    android:textColor="@color/White"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/gradient_white">
+
+                <TextView
+                    android:id="@+id/text_view_details_item_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Item Description will be here about the color and the quality of products and its int Scroll view"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </ScrollView>
+
+            <include
+                layout="@layout/product_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/gradient_red"
-                android:text="Order Now"
-                android:textAlignment="center"
-                android:textColor="@color/AliceBlue" />
+                android:layout_marginTop="10dp">
 
-            <android.support.design.button.MaterialButton
-                android:id="@+id/button_add_wishlist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/gradient_red"
-                android:text="Add to WishList"
-                android:textAlignment="center"
-                android:textColor="@color/BlanchedAlmond" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_order_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_red"
+                    android:text="Order Now"
+                    android:textAlignment="center"
+                    android:textColor="@color/AliceBlue" />
 
-            <android.support.design.button.MaterialButton
-                android:id="@+id/button_edit_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/gradient_black"
-                android:text="Edit"
-                android:textAlignment="center"
-                android:textColor="@color/AliceBlue"
-                android:visibility="gone" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_add_wishlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_red"
+                    android:text="Add to WishList"
+                    android:textAlignment="center"
+                    android:textColor="@color/BlanchedAlmond" />
 
-            <android.support.design.button.MaterialButton
-                android:id="@+id/button_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/gradient_blue"
-                android:text="Delete"
-                android:textAlignment="center"
-                android:textColor="@color/BlanchedAlmond" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_edit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_black"
+                    android:text="Edit"
+                    android:textAlignment="center"
+                    android:textColor="@color/AliceBlue"
+                    android:visibility="gone" />
 
-            <android.support.design.button.MaterialButton
-                android:id="@+id/button_wishdel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/gradient_blue"
-                android:text="Delete from wishlist"
-                android:textAlignment="center"
-                android:textColor="@color/BlanchedAlmond" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_blue"
+                    android:text="Delete"
+                    android:textAlignment="center"
+                    android:textColor="@color/BlanchedAlmond" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_wishdel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_blue"
+                    android:text="Delete from wishlist"
+                    android:textAlignment="center"
+                    android:textColor="@color/BlanchedAlmond" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pink_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_icon="@drawable/ic_lightbulb_outline_black_24dp"
+        app:fab_colorNormal="@color/Green"
+        app:fab_colorPressed="@color/GreenYellow"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"/>
+</FrameLayout>

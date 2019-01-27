@@ -65,7 +65,7 @@
             android:hint="@string/how_many_you_want_to_sell"
             android:inputType="numberSigned" />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:fontFamily="@font/google_sans_bold"
             android:textColor="@color/Wheat"
             android:background="@color/DarkRed"

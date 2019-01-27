@@ -46,7 +46,7 @@
             android:inputType="textPassword"
             android:padding="20dp" />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_sign_in_show_password"
             android:layout_marginTop="10dp"
             android:background="@color/white"
@@ -57,7 +57,7 @@
             android:text="@string/show" />
     </LinearLayout>
 
-    <android.support.design.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_sign_in_button"
         android:layout_gravity="center"
         android:background="@color/Crimson"

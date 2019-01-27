@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.design.button.MaterialButton
+            <com.google.android.material.button.MaterialButton
                 android:padding="8dp"
                 android:layout_gravity="center"
                 android:id="@+id/button_setting_show_password"
@@ -118,7 +118,7 @@
                 android:text="Show Password "
                 android:textColor="@color/Gold" />
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
