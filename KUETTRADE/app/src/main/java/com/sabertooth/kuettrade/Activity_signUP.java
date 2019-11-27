@@ -245,8 +245,16 @@ public class Activity_signUP extends AppCompatActivity {
                                             try {
                                                 Log.d("CAME", "uploading_data_user");
                                                 databaseUser.child(uid).setValue(user_now);
+                                                pDialog.dismiss();
+                                                finish();
+                                                Intent intent = new Intent(getApplicationContext(), SignIn_Activity.class);
+                                                startActivity(intent);
+                                                Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification();
+                                                Toast.makeText(Activity_signUP.this, "Verification Mail is sent. Please Verify Your Mail", Toast.LENGTH_SHORT).show();
+                                                Log.d("CAME", "uploaded_data_user");
                                             } catch (Exception e) {
                                                 toaster(e.getMessage());
+                                                Log.e("OKNOT",e.getMessage());
                                             }
                                         } else {
                                             toaster("UId Is Empty");
@@ -254,24 +262,20 @@ public class Activity_signUP extends AppCompatActivity {
                                     } else {
                                         toaster("USER is empty");
                                     }
-                                    Log.d("CAME", "uploaded_data_user");
+
+                                }
+                                else {
+                                    pDialog.dismiss();
+                                    if (task.getException() instanceof FirebaseAuthUserCollisionException)
+                                        Toast.makeText(getApplicationContext(), "This Mail is Already Registered", Toast.LENGTH_LONG).show();
+                                    else {
+                                        Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             }
                         });
                     }
-                    pDialog.dismiss();
-                    finish();
-                    Intent intent = new Intent(getApplicationContext(), SignIn_Activity.class);
-                    startActivity(intent);
-                    Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification();
-                    Toast.makeText(Activity_signUP.this, "Verification Mail is sent. Please Verify Your Mail", Toast.LENGTH_SHORT).show();
-                } else {
-                    pDialog.dismiss();
-                    if (task.getException() instanceof FirebaseAuthUserCollisionException)
-                        Toast.makeText(getApplicationContext(), "This Mail is Already Registered", Toast.LENGTH_LONG).show();
-                    else {
-                        Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
-                    }
+
                 }
             }
         });

@@ -47,12 +47,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class store_and_user_nav_settings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    String API="http://api.apixu.com/v1/current.json?key=b349e54ea3394aa1b9f90815182911&q=Fulbari";
+    //String API="http://api.apixu.com/v1/current.json?key=b349e54ea3394aa1b9f90815182911&q=Fulbari";
     static User_class user_x;
     DatabaseReference UserRef, productsref;
     private FirebaseAuth mAuth;
     ImageView coverPic;
-    CircleImageView propic,weather_pic;
+    CircleImageView propic;
+    //weather_pic;
     LinearLayout nav_lin_layout;
     TextView nav_user_name, nav_user_mail,weather_loc,weather_temp;
     Toolbar toolbar;
@@ -61,7 +62,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
     NavigationView navigationView;
     View headerView;
     //get_weather gc;
-    MaterialCardView mcv;
+    //MaterialCardView mcv;
     ProgressDialog pg;
     RecyclerView tsh, tsf, psh, psf, hod;
     Adapter_1 adp1, adp2, adp3, adp4, adp5;
@@ -101,19 +102,16 @@ public class store_and_user_nav_settings extends AppCompatActivity
         RetriveUserInfo();
         fetch_data();
         log_print();
-        mcv.setOnClickListener(new View.OnClickListener() {
+      /*  mcv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                get_weather gc=new get_weather();
-                gc.execute();
+              //  get_weather gc=new get_weather();
+               // gc.execute();
             }
-        });
+        });*/
     }
 
     private void initialize() {
-        weather_pic=findViewById(R.id.image_view_day_stat);
-        weather_loc=findViewById(R.id.text_view_loaction);
-        weather_temp=findViewById(R.id.text_view_temp);
         user_x = new User_class();
         ar_hod = new ArrayList<>();
         ar_psf = new ArrayList<>();
@@ -121,7 +119,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
         ar_tsf = new ArrayList<>();
         ar_tsh = new ArrayList<>();
         my_items = new ArrayList<>();
-        mcv=findViewById(R.id.weather_update);
+        //mcv=findViewById(R.id.weather_update);
         hod = findViewById(R.id.recycler_view_hoodie);
         psf = findViewById(R.id.recycler_view_polo_shirt_full);
         psh = findViewById(R.id.recycler_view_polo_shirt_half);
@@ -145,8 +143,8 @@ public class store_and_user_nav_settings extends AppCompatActivity
         nav_lin_layout = headerView.findViewById(R.id.linear_layout_nav);
         nav_user_name = headerView.findViewById(R.id.text_view_nav_user_name);
         nav_user_mail = headerView.findViewById(R.id.text_view_nav_user_mail);
-        get_weather gc=new get_weather();
-        gc.execute();
+       // get_weather gc=new get_weather();
+        //gc.execute();
         pg.dismiss();
     }
 
@@ -414,6 +412,7 @@ public class store_and_user_nav_settings extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    /*
     private  class get_weather extends AsyncTask<Void,Void,Void>{
         double temp_c;
         String url;
@@ -460,5 +459,5 @@ public class store_and_user_nav_settings extends AppCompatActivity
                 Log.e("FUCK",e.getMessage());
             }
         }
-    }
+    }*/
 }

@@ -3,11 +3,11 @@ package com.sabertooth.kuettrade;
 import java.util.ArrayList;
 
 class User_class {
-    String Name, Email, Address, Phone1, Phone2;
-    String proPicUrl, coverPicUrl;
-    String uid;
-    String password;
-    ArrayList<Product_class>wishlist;
+    public String Name, Email, Address, Phone1, Phone2;
+    public String proPicUrl, coverPicUrl;
+    public String uid;
+    public String password;
+    public ArrayList<Product_class>wishlist;
 
     User_class() {
         wishlist=new ArrayList<>();
