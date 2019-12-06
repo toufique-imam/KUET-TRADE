@@ -48,10 +48,11 @@ public class ItemDetails_activity extends AppCompatActivity {
     ImageView image_f,image_b;
     private FirebaseAuth mAuth;
     DatabaseReference UserRef,UpdateRef,deleteRef,delwishRef;
-    TextView item_name,item_des,item_price;
+    TextView item_name,item_des,item_price,discounttext;
     Product_class pc;
     CheckBox s,m,l,xl,xxl,xl_3,xl_4;
     MaterialButton order_btn,wishlist_btn,edit_btn,del_btn,del_wish;
+    EditText discount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +81,9 @@ public class ItemDetails_activity extends AppCompatActivity {
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ItemDetails_activity.this, "Not Yet Implemented", Toast.LENGTH_SHORT).show();
+                String dis = discount.getText().toString();
+                updateDiscount(deleteRef,Integer.valueOf(dis));
+                //Toast.makeText(ItemDetails_activity.this, "Not Yet Implemented", Toast.LENGTH_SHORT).show();
             }
         });
         del_btn.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +100,9 @@ public class ItemDetails_activity extends AppCompatActivity {
             }
         });
     }
-
+    private  void updateDiscount(final  DatabaseReference ref,Integer dis){
+        ref.child("discount").setValue(dis);
+    }
     private void delete_product(final DatabaseReference ref,String s) {
         AlertDialog.Builder dialogueBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -154,6 +159,8 @@ public class ItemDetails_activity extends AppCompatActivity {
         xxl=findViewById(R.id.checkbox_XXL);
         xl_3=findViewById(R.id.checkbox_3XL);
         xl_4=findViewById(R.id.checkbox_4XL);
+        discount = findViewById(R.id.edit_text_discount);
+        discounttext = findViewById(R.id.text_view_discount);
     }
     void inten_init() {
         Intent in=getIntent();
@@ -164,14 +171,18 @@ public class ItemDetails_activity extends AppCompatActivity {
             del_wish.setVisibility(View.GONE);
             edit_btn.setVisibility(View.VISIBLE);
             del_btn.setVisibility(View.VISIBLE);
+            discount.setVisibility(View.VISIBLE);
+            discounttext.setVisibility(View.GONE);
             pc=use_me;
         }
         else{
+            discount.setVisibility(View.GONE);
             del_wish.setVisibility(View.GONE);
             order_btn.setVisibility(View.VISIBLE);
             wishlist_btn.setVisibility(View.VISIBLE);
             edit_btn.setVisibility(View.GONE);
             del_btn.setVisibility(View.GONE);
+            discounttext.setVisibility(View.VISIBLE);
             pc=pc_me;
         }
         boolean flg1=in.getExtras().getBoolean("WISH");
@@ -185,6 +196,7 @@ public class ItemDetails_activity extends AppCompatActivity {
             item_name.setText(pc.name);
             item_des.setText(pc.description);
             item_price.setText(pc.price+" tk");
+            discounttext.setText(pc.discount.toString()+" %");
         }catch (Exception e){
             Log.e("DEBUGME",e.getMessage());
         }
@@ -203,9 +215,6 @@ public class ItemDetails_activity extends AppCompatActivity {
         UserRef = FirebaseDatabase.getInstance().getReference("users");
         UpdateRef=FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).child("wishlist");
         if(pc.wid!=null)delwishRef=UpdateRef.child(pc.wid);
-        //Log.e("FUCK",pc.id);
-        //Log.e("FUCK",pc.name);
         deleteRef=FirebaseDatabase.getInstance().getReference("products").child(pc.type).child(pc.id);
-        //Log.e("FUCK",deleteRef.getPath().toString());
     }
 }

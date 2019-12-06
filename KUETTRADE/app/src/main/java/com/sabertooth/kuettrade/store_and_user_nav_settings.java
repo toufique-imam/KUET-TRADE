@@ -53,7 +53,6 @@ public class store_and_user_nav_settings extends AppCompatActivity
     private FirebaseAuth mAuth;
     ImageView coverPic;
     CircleImageView propic;
-    //weather_pic;
     LinearLayout nav_lin_layout;
     TextView nav_user_name, nav_user_mail,weather_loc,weather_temp;
     Toolbar toolbar;
@@ -61,8 +60,6 @@ public class store_and_user_nav_settings extends AppCompatActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     View headerView;
-    //get_weather gc;
-    //MaterialCardView mcv;
     ProgressDialog pg;
     RecyclerView tsh, tsf, psh, psf, hod;
     Adapter_1 adp1, adp2, adp3, adp4, adp5;

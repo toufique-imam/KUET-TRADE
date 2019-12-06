@@ -3,12 +3,13 @@ package com.sabertooth.kuettrade;
 import java.util.ArrayList;
 
 public class Product_class {
-    String uid,id,name,address,phone1,phone2,description;
-    String wid;
-    Integer price,amount;
-    String image_front,image_back;
-    ArrayList<Boolean>size;
-    String type;
+    public String uid,id,name,address,phone1,phone2,description;
+    public String wid;
+    public Integer price,amount;
+    public String image_front,image_back;
+    public ArrayList<Boolean>size;
+    public String type;
+    public Integer discount;
     Product_class(){size=new ArrayList<>();
     size.add(false);
     size.add(false);
@@ -32,9 +33,11 @@ public class Product_class {
         this.size = size;
         this.type = type;
         this.wid=null;
+        this.discount = 0;
     }
 
     public Product_class(String uid, String id, String name, String address, String phone1, String phone2, String description, String wid, Integer price, Integer amount, String image_front, String image_back, ArrayList<Boolean> size, String type) {
+        this.discount = 0;
         this.uid = uid;
         this.id = id;
         this.name = name;

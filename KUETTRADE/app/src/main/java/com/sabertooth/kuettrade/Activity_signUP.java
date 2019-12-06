@@ -201,6 +201,7 @@ public class Activity_signUP extends AppCompatActivity {
             et_pass.requestFocus();
             return;
         }
+
         if (!f1) {
             Toast.makeText(getApplicationContext(), "Profile Image Shouldn't be Empty", Toast.LENGTH_LONG).show();
             et_pass.requestFocus();
@@ -339,8 +340,6 @@ public class Activity_signUP extends AppCompatActivity {
         StorageReference profileImageRef =
                 FirebaseStorage.getInstance().getReference(loc + "/" + System.currentTimeMillis() + ".jpg");
         if (imageUri != null) {
-            //       Log.d("LOG_PH4", imageUri.toString());
-            //pgb.setVisibility(View.VISIBLE);
             final StorageReference photoStorageReference = profileImageRef.child("profilepics/" + System.currentTimeMillis() + ".jpg");
             photoStorageReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
@@ -354,7 +353,6 @@ public class Activity_signUP extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
                     pDialog.dismiss();
-                    //      pgb.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
                         image_url = downloadUri.toString();
@@ -362,7 +360,6 @@ public class Activity_signUP extends AppCompatActivity {
                             profle_pic_url = image_url;
                         else
                             cover_pic_url = image_url;
-                        //                 Log.d("WHAT", image_url);
                     } else {
                         Toast.makeText(getApplicationContext(), "upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

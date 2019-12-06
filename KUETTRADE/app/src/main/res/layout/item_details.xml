@@ -78,7 +78,15 @@
             layout="@layout/product_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+        <EditText
+            android:id="@+id/edit_text_discount"
+            android:hint="Discount"
+            android:inputType="numberSigned"
+            style="@style/text_add_products"/>
+        <TextView
+            android:id="@+id/text_view_discount"
+            android:hint="Discount user"
+            style="@style/text_add_products"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
