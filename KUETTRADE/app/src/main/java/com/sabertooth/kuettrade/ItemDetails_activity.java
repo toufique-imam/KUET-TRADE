@@ -48,7 +48,7 @@ public class ItemDetails_activity extends AppCompatActivity {
     ImageView image_f,image_b;
     private FirebaseAuth mAuth;
     DatabaseReference UserRef,UpdateRef,deleteRef,delwishRef;
-    TextView item_name,item_des,item_price,discounttext;
+    TextView item_name,item_des,item_price,discounttext,countitem;
     Product_class pc;
     CheckBox s,m,l,xl,xxl,xl_3,xl_4;
     MaterialButton order_btn,wishlist_btn,edit_btn,del_btn,del_wish;
@@ -161,6 +161,7 @@ public class ItemDetails_activity extends AppCompatActivity {
         xl_4=findViewById(R.id.checkbox_4XL);
         discount = findViewById(R.id.edit_text_discount);
         discounttext = findViewById(R.id.text_view_discount);
+        countitem = findViewById(R.id.text_view_count);
     }
     void inten_init() {
         Intent in=getIntent();
@@ -196,6 +197,7 @@ public class ItemDetails_activity extends AppCompatActivity {
             item_name.setText(pc.name);
             item_des.setText(pc.description);
             item_price.setText(pc.price+" tk");
+            countitem.setText("Available Amount : "+pc.amount);
             discounttext.setText(pc.discount.toString()+" %");
         }catch (Exception e){
             Log.e("DEBUGME",e.getMessage());

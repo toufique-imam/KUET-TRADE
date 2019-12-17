@@ -87,6 +87,10 @@
             android:id="@+id/text_view_discount"
             android:hint="Discount user"
             style="@style/text_add_products"/>
+        <TextView
+            android:id="@+id/text_view_count"
+            android:hint="Item Available"
+            style="@style/text_add_products"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
